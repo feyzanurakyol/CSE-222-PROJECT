@@ -65,12 +65,12 @@ public class Governor {
 		
 	}
 	
-	public void addPersonnel(/* Prisoner type object OR prisoner informations */)
+	public void addPersonnel(/* Personnel type object OR prisoner informations */)
 	{
 		
 	}
 	
-	public void removePersonnel(/* Prisoner type object OR prisoner informations */)
+	public void removePersonnel(/* Personnel type object OR prisoner informations */)
 	{
 		
 	}
