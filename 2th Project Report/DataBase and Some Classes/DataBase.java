@@ -7,7 +7,7 @@ public class DataBase {
     private LinkedList<DailyFoodMenu> menuList;
     private Queue<Visitor> visitors;
     private Queue<ToDo> toDos;
-    private Stack<HealthAppointment> healthAppointments;
+    private Stack<HealthAppointment> healthAppointments;  //-Stack can be Deque-
     BinarySearchTree<Inmate> prisoners;
     BinarySearchTree<Personnel> allPersonnel;
 
