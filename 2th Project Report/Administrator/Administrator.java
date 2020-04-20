@@ -2,12 +2,20 @@ public abstract class Administrator {
 
 	private String password;
 
+	public Administrator (String pass) {
+		if (isValid(pass) ) {
+			password = pass;
+		} else throw new Exception(); // this will be replaced with InvalidPasswordException
+		// TO-DO: Implement InvalidPasswordException
+	}
+
 	/*
 		Checks is the given password is valid.
+		TO-DO:
 		This method will be implemented when the
 		conditions for password validity are defined.
 	*/
-	private boolean isValid(String password);
+	private boolean isValid (String password);
 
 	/*
 		Change the password with a new one.
