@@ -1,5 +1,6 @@
 package com.Akif;
 
+// Job can be add or remove Inmate, according to the feedback of the governor to the secretary.
 public class ToDo {
     private String job;
     private boolean isDone;
