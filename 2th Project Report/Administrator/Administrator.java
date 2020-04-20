@@ -13,7 +13,7 @@ public abstract class Administrator {
 	/*
 		Check that input matches the password 
 	*/
-	public boolean checkPassword (String input);
+	public boolean checkPassword (String input) { return password.equals(input); }
 
 	private void addGovernor (int id);
 
