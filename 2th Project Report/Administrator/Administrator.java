@@ -3,6 +3,13 @@ public abstract class Administrator {
 	private String password;
 
 	/*
+		Checks is the given password is valid.
+		This method will be implemented when the
+		conditions for password validity are defined.
+	*/
+	private boolean isValid(String password);
+
+	/*
 		Change the password with a new one.
 		Check the old password before setting the new password.
 		Throw excpetion if there is a problem
