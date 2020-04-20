@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public abstract class Administrator {
 
 	private String password;
@@ -23,7 +25,17 @@ public abstract class Administrator {
 		Throw excpetion if there is a problem
 		eg. Invalid password.
 	*/
-	public void setPassword (String new_pass);
+	public void setPassword (String new_pass) {
+		if (isValid(new_pass) ) {
+			Scanner old_pass_scanner = new Scanner(System.in);
+			String old_pass = old_pass_scanner.nextLine(); // this will be changed
+
+			if (checkPassword(old_pass) ) {
+				password = new_pass;
+			} else throw new Exception(); // this will be replaced with WrongPasswordException
+			// TO-DO: Implement WrongPasswordException
+		} else throw new Exception(); // this will be replaced with InvalidPasswordException
+	}
 
 	/*
 		Check that input matches the password 
