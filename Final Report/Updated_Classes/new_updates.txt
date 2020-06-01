@@ -1,0 +1,16 @@
+what was done?
+02.06.2020
+-Database is updated.
+-Personnel is updated.(is not abstract anymore to instantiate)
+-Inamte is updated.
+-DailyFoodMenu is updated.
+-BinarySearchTree is updated.
+-Todos is not completed.
+- Package was changed to com.Group1
+Other than database is not implemented just comments and
+some little changes was made.
+While adding date instead of taking from user you can use system time.
+tostring is important for data java automatic tostring is good to print.
+You can update database class to reach your data.
+
+					            ~Akif~
