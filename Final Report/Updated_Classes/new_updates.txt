@@ -2,7 +2,7 @@ what was done?
 02.06.2020
 -Database is updated.
 -Personnel is updated.(is not abstract anymore to instantiate)
--Inamte is updated.
+-Inmate is updated.
 -DailyFoodMenu is updated.
 -BinarySearchTree is updated.
 -Todos is not completed.
