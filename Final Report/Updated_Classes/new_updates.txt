@@ -16,4 +16,7 @@ You can update database class to reach your data.
 					            ~Akif~
 						    
 There is no default constructor in Personnel class.
+compareTo method in Personnel class should be implemented.
+
+(I noted it not to forget it.)
 
