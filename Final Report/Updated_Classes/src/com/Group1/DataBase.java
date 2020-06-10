@@ -61,11 +61,19 @@ public class DataBase {
     public void addVisitorToTheTop(Visitor visitor){
         visitors.offer (visitor);
     }
+    
+    /* Parametreye gerek yok poll yapmak için diye düşündüm.
     public Visitor deleteVisitorFromTop(Visitor visitor){
         if (visitors.isEmpty ())
             return null;
         return visitors.poll ();
-    }
+    } */
+    
+    public Visitor deleteVisitorFromTop(){
+        if (visitors.isEmpty ())
+            return null;
+        return visitors.poll ();
+    
     public Visitor getVisitorFromTop(){
         if (visitors.isEmpty ())
             return null;
