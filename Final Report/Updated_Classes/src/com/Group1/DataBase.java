@@ -73,6 +73,7 @@ public class DataBase {
         if (visitors.isEmpty ())
             return null;
         return visitors.poll ();
+    }
     
     public Visitor getVisitorFromTop(){
         if (visitors.isEmpty ())
