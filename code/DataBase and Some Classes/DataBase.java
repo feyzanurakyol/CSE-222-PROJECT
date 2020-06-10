@@ -12,13 +12,19 @@ public class DataBase {
     private PriorityQueue<HealthAppointment> healthAppointments;
     BinarySearchTree<Inmate> prisoners;
     BinarySearchTree<Personnel> allPersonnel;
+    private LinkedList<Jailer> jailers;
+    private LinkedList<ChiefJailer> chiefJailers;
+    
     public DataBase(){
         menuList = new LinkedList<> ();
         visitors = new LinkedList<> ();
+        jailers = new LinkedList<> ();
+        chiefJailers = new LinkedList<> ();
         toDos = new LinkedList<> ();
         healthAppointments = new PriorityQueue<> ();
         prisoners = new BinarySearchTree<> ();
         allPersonnel = new BinarySearchTree<> ();
+        
     }
     public void addMenu(DailyFoodMenu menu){
         if (menu.getDate ().compareTo (new Date ())<=0){
