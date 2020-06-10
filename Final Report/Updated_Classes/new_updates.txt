@@ -17,6 +17,7 @@ You can update database class to reach your data.
 						    
 There is no default constructor in Personnel class.
 compareTo method in Personnel class should be implemented.
+In database class, getPersonnel method gives error. Because the personnel class is abstract. 
 
 (I noted it not to forget it.)
 
