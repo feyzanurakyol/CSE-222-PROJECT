@@ -14,3 +14,6 @@ tostring is important for data java automatic tostring is good to print.
 You can update database class to reach your data.
 
 					            ~Akif~
+						    
+There is no default constructor in Personnel class.
+
