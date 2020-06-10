@@ -21,3 +21,6 @@ In database class, getPersonnel method gives error. Because the personnel class 
 
 (I noted it not to forget it.)
 
+--------------------------------------------------------
+Chief Jailor and Jailor needs to be updated.
+

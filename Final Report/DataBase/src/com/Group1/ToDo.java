@@ -1,15 +1,17 @@
 package com.Group1;
 
+import java.util.Date;
+
 // Job can be add or remove Inmate, according to the feedback of the governor to the secretary.
 public class ToDo {
     private String job;
     private boolean isDone;
-    private int ownerID;
+    private Personnel personnelGroup;
 
-    public ToDo (String job, boolean isDone, int ownerID) {
+    public ToDo (String job, int ownerID,DataBase dataBase) {
         this.job = job;
-        this.isDone = isDone;
-        this.ownerID = ownerID;
+        this.isDone = false;
+        dataBase.addToDoToTheTop (this);
     }
 
     public String getJob () {
@@ -28,11 +30,12 @@ public class ToDo {
         isDone = done;
     }
 
-    public int getOwnerID () {
-        return ownerID;
-    }
 
-    public void setOwnerID (int ownerID) {
-        this.ownerID = ownerID;
+    @Override
+    public String toString () {
+        return "ToDo{" +
+                "job='" + job + '\'' +
+                ", isDone=" + isDone +
+                '}';
     }
 }

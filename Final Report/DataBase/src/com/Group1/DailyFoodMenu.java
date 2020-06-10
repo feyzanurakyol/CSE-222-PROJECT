@@ -34,6 +34,8 @@ public class DailyFoodMenu {
     @Override
     public String toString () {
        StringBuilder stringBuilder = new StringBuilder ();
+        stringBuilder.append ("***Date: " +date+"***");
+        stringBuilder.append ("\n");
         for (String s : menu) {
             stringBuilder.append (s);
             stringBuilder.append ("\n");

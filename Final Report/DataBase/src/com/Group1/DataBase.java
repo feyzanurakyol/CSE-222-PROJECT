@@ -1,29 +1,30 @@
 package com.Group1;
 
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
+
 /**
- * This class keeps all data regarding the system in a n appropriate data structure.
+ * This class keeps all data regarding the system in an appropriate data structure.
  * It also operate the data.
  * It keeps data by using List,Queue and Binary Search Tree.
  * We wrote this class for reusable purpose, we will use this operations later.
  * */
 public class DataBase {
-    private LinkedList<DailyFoodMenu> menuList;
-    private Queue<Visitor> visitors;
-    private PriorityQueue<ToDo> toDos; //todos has changed.
-    private PriorityQueue<HealthAppointment> healthAppointments;
-    BinarySearchTree<Inmate> prisoners;
-    BinarySearchTree<Personnel> allPersonnel; //personnel can be changed as SkipList
+    //updated data structures
+    private List<DailyFoodMenu> menuList;
+    private Map<Inmate, Set<Visitor>> visitorsMap;
+    private PriorityQueue<ToDo> toDoQueue;
+    private Queue<HealthAppointment> healthAppointmentsQueue;
+    private AVLTree<Inmate> prisonersTree;
+    private SkipList<Personnel> allPersonnel;
+    private ListGraph prison_structure; //it will change a generic graph
     public DataBase(){
         menuList = new LinkedList<> ();
-        visitors = new LinkedList<> ();
-        toDos = new PriorityQueue<> ();
-        healthAppointments = new PriorityQueue<> ();
-        prisoners = new BinarySearchTree<> ();
-        allPersonnel = new BinarySearchTree<> ();
+        visitorsMap = new HashMap<> ();
+        toDoQueue = new PriorityQueue<> ();
+        healthAppointmentsQueue = new LinkedList<> ();
+        prisonersTree = new AVLTree<> ();
+        allPersonnel = new SkipList<> ();
+        prison_structure = new ListGraph (5,true);
     }
     public void addMenu(DailyFoodMenu menu){
         if (menu.getDate ().compareTo (new Date ())<=0){
@@ -58,8 +59,8 @@ public class DataBase {
             throw new ArrayIndexOutOfBoundsException();
         return menuList.get (index);
     }
-    public void addVisitorToTheTop(Visitor visitor){
-        visitors.offer (visitor);
+    public void addVisitor(Inmate prisoner,Set<Visitor> visitorSet){
+        visitorsMap.put (prisoner,visitorSet);
     }
     
     /* Parametreye gerek yok poll yapmak için diye düşündüm.
@@ -69,56 +70,66 @@ public class DataBase {
         return visitors.poll ();
     } */
     
-    public Visitor deleteVisitorFromTop(){
-        if (visitors.isEmpty ())
-            return null;
-        return visitors.poll ();
+    public Visitor deleteVisitor(Inmate prisoner,Visitor visitor){
+        Collection<Set<Visitor>> values = visitorsMap.values ();
+        for (Set<Visitor> visitorSet : values) {
+            if (visitorSet.contains (visitor)){
+                visitorSet.remove (visitor);
+                return visitor;
+            }
+        }
+        return null;
     }
-    
-    public Visitor getVisitorFromTop(){
-        if (visitors.isEmpty ())
-            return null;
-        return visitors.peek ();
+    public Visitor getVisitorWithTC(String TC){
+        Collection<Set<Visitor>> values = visitorsMap.values ();
+        for (Set<Visitor> visitorSet : values) {
+            for (Visitor visitor:visitorSet) {
+                if (visitor.TCNumber.equals (TC)){
+                    return visitor;
+                }
+            }
+        }
+        return null;
     }
     //no update for queue
     public void addToDoToTheTop(ToDo job){
-        toDos.offer (job);
+        toDoQueue.offer (job);
     }
     public ToDo deleteToDoFromTop(ToDo job){
-        if (toDos.isEmpty ())
+        if (toDoQueue.isEmpty ())
             return null;
-        return toDos.poll ();
+        return toDoQueue.poll ();
     }
     public ToDo getToDoFromTop(){
-        if (toDos.isEmpty ())
+        if (toDoQueue.isEmpty ())
             return null;
-        return toDos.peek ();
+        return toDoQueue.peek ();
     }
     public void addHealthAppointmentToTheTop(HealthAppointment appointment){
-        healthAppointments.offer (appointment);
+        healthAppointmentsQueue.offer (appointment);
     }
     public HealthAppointment deleteHealthAppointmentFromTop(HealthAppointment appointment){
-        if (toDos.isEmpty ())
+        if (healthAppointmentsQueue.isEmpty ())
             return null;
-        return healthAppointments.poll ();
+        return healthAppointmentsQueue.poll ();
     }
     public HealthAppointment getHealthAppointment(){
-        if (toDos.isEmpty ())
+        if (healthAppointmentsQueue.isEmpty ())
             return null;
-        return healthAppointments.peek ();
+        return healthAppointmentsQueue.peek ();
     }
     public void addInmate(Inmate inmate){
-        prisoners.add (inmate);
+        prisonersTree.add (inmate);
     }
     public Inmate deleteInmate(Inmate inmate ){
-       return prisoners.delete (inmate);
+       return prisonersTree.delete (inmate);
     }
     public void updateInmate(Inmate oldInmate, Inmate newInmate){
-        prisoners.delete (oldInmate);
-        prisoners.add (newInmate);
+        prisonersTree.delete (oldInmate);
+        prisonersTree.add (newInmate);
     }
     public Inmate getInmate(int inmateID){
-        return prisoners.find (new Inmate (inmateID));
+        return prisonersTree.find (new Inmate (inmateID));
     }
     public void addPersonnel(Personnel personnel){
         allPersonnel.add (personnel);
@@ -150,7 +161,9 @@ public class DataBase {
         System.out.println ("***All Menu in the system");
         for (int k = 0; k < 60; k++) System.out.print("-");
         System.out.println ();
-        //print
+        for (DailyFoodMenu menu:menuList) {
+            System.out.println (menu);
+        }
         for (int k = 0; k < 60; k++) System.out.print("-");
         System.out.println ();
 
@@ -159,7 +172,28 @@ public class DataBase {
         System.out.println ("***All Visitors in the system");
         for (int k = 0; k < 60; k++) System.out.print("-");
         System.out.println ();
-        //print
+        Set<Inmate> inmates = visitorsMap.keySet ();
+        Collection<Set<Visitor>> values = visitorsMap.values ();
+        Iterator<Set<Visitor>> iter =values.iterator ();
+        int j=0;
+        System.out.println ("Inmates and Visitors:");
+        for (Inmate inmate:inmates) {
+            System.out.printf("[%d] %s\n",j+1,inmate.getName ());
+            System.out.println ("\tVisitors:");
+            j++;
+            if (iter.hasNext ()){
+                Set<Visitor> visitorSet = iter.next ();
+                int i=0;
+                for (Visitor visitor:visitorSet) {
+                    System.out.printf("\t[%d] %s\n",i+1,visitor.getName ());
+                    i++;
+                }
+            }
+            else{
+                break;
+            }
+
+        }
         for (int k = 0; k < 60; k++) System.out.print("-");
         System.out.println ();
     }
@@ -175,7 +209,9 @@ public class DataBase {
         System.out.println ("***All Health Appointments in the system");
         for (int k = 0; k < 60; k++) System.out.print("-");
         System.out.println ();
-        //print
+        for (HealthAppointment appointment:healthAppointmentsQueue) {
+            System.out.println (appointment);
+        }
         for (int k = 0; k < 60; k++) System.out.print("-");
         System.out.println ();
     }
@@ -183,7 +219,7 @@ public class DataBase {
         System.out.println ("***All Prisoners in the system");
         for (int k = 0; k < 60; k++) System.out.print("-");
         System.out.println ();
-        //print
+        System.out.println (prisonersTree);
         for (int k = 0; k < 60; k++) System.out.print("-");
         System.out.println ();
     }
@@ -191,7 +227,7 @@ public class DataBase {
         System.out.println ("***All Personnel in the system");
         for (int k = 0; k < 60; k++) System.out.print("-");
         System.out.println ();
-        //print
+        System.out.println (allPersonnel);
         for (int k = 0; k < 60; k++) System.out.print("-");
         System.out.println ();
     }
