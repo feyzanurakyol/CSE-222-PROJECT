@@ -4,10 +4,6 @@ public class Governor {
 	private String name;
 	private String surname;
 	private String TCNumber;
-	/*private static queue (Visitor class type) */
-	/*private static Binary Search Tree ( Inmade class type) */
-	/*private static LinkedList or ArrayList (Personnel class type) */
-	/*private static LinkedList or ArrayList (Jailer class type) */
 	public Governor(String name, String surname, String TCNumber)
 	{
 		this.name = name;
@@ -44,7 +40,8 @@ public class Governor {
 	{
 		this.TCNumber = TCNumber;
 	}
-	
+	//governor'ın yapacağı işlemler ayrı bir class'a alınabilir
+	//governor için add daily to do seçeneği eklenicek ve yapılacak işleri sırasıyla giricek.
 	public void addJailer(/*Jailer type object OR name, surname, TC, etc.*/)
 	{
 		
