@@ -23,4 +23,21 @@ In database class, getPersonnel method gives error. Because the personnel class 
 
 --------------------------------------------------------
 Chief Jailor and Jailor needs to be updated.
+-------------------------
+11.06.2020(~akif~)
+------------------------
+Todo ve Database güncellendi.
+Todo için yapılması gerekenler
+--------------------------------
+Governor için add todo seçeneği olucak ve ilk eklediği todo en önemli iş olucak
+yani to do ekledikçe todo size'ına göre importance order belirleniyor ve ilk
+eklediği iş en tepede olucak dolayısıyla..
 
+-Governor urgent Todo ekleyebilir database de method mevcut 
+yani en üste
+---------------------------------------------------
+Her personel check todo seçeneği olucak ve o personel eğer ilk todo ya sahipse
+onu görücek ve hemen yapması gerekicek çünkü diğer todolar onu bekliyor
+Bu işlem için database classında metod yazıldı
+-----------------------------------------------------------
+- silinen(yani yapılan) todolar listede tutuluyor.

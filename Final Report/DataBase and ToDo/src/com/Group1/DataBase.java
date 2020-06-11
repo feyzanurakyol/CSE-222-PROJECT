@@ -12,7 +12,8 @@ public class DataBase {
     //updated data structures
     private List<DailyFoodMenu> menuList;
     private Map<Inmate, Set<Visitor>> visitorsMap;
-    private PriorityQueue<ToDo> toDoQueue;
+    private PriorityQueue<ToDo> activeToDoQueue;
+    private List<ToDo> passiveToDo; //Todos that was done before
     private Queue<HealthAppointment> healthAppointmentsQueue;
     private AVLTree<Inmate> prisonersTree;
     private SkipList<Personnel> allPersonnel;
@@ -20,7 +21,8 @@ public class DataBase {
     public DataBase(){
         menuList = new LinkedList<> ();
         visitorsMap = new HashMap<> ();
-        toDoQueue = new PriorityQueue<> ();
+        activeToDoQueue = new PriorityQueue<> ();
+        passiveToDo = new ArrayList<> ();
         healthAppointmentsQueue = new LinkedList<> ();
         prisonersTree = new AVLTree<> ();
         allPersonnel = new SkipList<> ();
@@ -62,14 +64,6 @@ public class DataBase {
     public void addVisitor(Inmate prisoner,Set<Visitor> visitorSet){
         visitorsMap.put (prisoner,visitorSet);
     }
-    
-    /* Parametreye gerek yok poll yapmak için diye düşündüm.
-    public Visitor deleteVisitorFromTop(Visitor visitor){
-        if (visitors.isEmpty ())
-            return null;
-        return visitors.poll ();
-    } */
-    
     public Visitor deleteVisitor(Inmate prisoner,Visitor visitor){
         Collection<Set<Visitor>> values = visitorsMap.values ();
         for (Set<Visitor> visitorSet : values) {
@@ -93,17 +87,41 @@ public class DataBase {
     }
     //no update for queue
     public void addToDoToTheTop(ToDo job){
-        toDoQueue.offer (job);
+        activeToDoQueue.offer (job);
     }
     public ToDo deleteToDoFromTop(ToDo job){
-        if (toDoQueue.isEmpty ())
+        if (activeToDoQueue.isEmpty ())
             return null;
-        return toDoQueue.poll ();
+        passiveToDo.add (activeToDoQueue.peek ());
+        return activeToDoQueue.poll ();
     }
     public ToDo getToDoFromTop(){
-        if (toDoQueue.isEmpty ())
+        if (activeToDoQueue.isEmpty ())
             return null;
-        return toDoQueue.peek ();
+        return activeToDoQueue.peek ();
+    }
+    public int toDoSize(){
+        return activeToDoQueue.size ();
+    }
+
+    /**
+     * Returns true if the personnel has most importance job.
+     * @param personnelId personnel id of personnel
+     * @return true if the personnel has most importance job.
+     */
+    public boolean personnelTodo(int personnelId){
+        if (!activeToDoQueue.isEmpty ()){
+            if (activeToDoQueue.peek ().getOwnerID () == personnelId){
+                return true;
+            }
+        }
+        return false;
+    }
+    public void addUrgentTodo(ToDo urgentTodo){
+        if (!activeToDoQueue.isEmpty ()){
+            urgentTodo.setImportanceOrder (activeToDoQueue.peek ().getImportanceOrder ()-1);
+        }
+        activeToDoQueue.add (urgentTodo);
     }
     public void addHealthAppointmentToTheTop(HealthAppointment appointment){
         healthAppointmentsQueue.offer (appointment);
@@ -144,6 +162,8 @@ public class DataBase {
     public Personnel getPersonnel(int personnelID){
         return allPersonnel.find (new Personnel (personnelID) );
     }
+
+    //------------Printing-----------------------------------------------------------------
     public void printAllData(){
         System.out.println ("***All Data is in the system");
         for (int k = 0; k < 60; k++) System.out.print("-");
@@ -152,7 +172,7 @@ public class DataBase {
         printAllMenus ();
         printAllPersonnel ();
         printAllVisitor ();
-        printAllToDos ();
+        printAllActiveToDos ();
         printAllPrisoners ();
         for (int k = 0; k < 60; k++) System.out.print("-");
         System.out.println ();
@@ -197,11 +217,13 @@ public class DataBase {
         for (int k = 0; k < 60; k++) System.out.print("-");
         System.out.println ();
     }
-    public void printAllToDos(){
+    public void printAllActiveToDos(){
         System.out.println ("***All ToDos in the system");
         for (int k = 0; k < 60; k++) System.out.print("-");
         System.out.println ();
-        //print
+        for (ToDo toDo : activeToDoQueue) {
+            System.out.println (toDo);
+        }
         for (int k = 0; k < 60; k++) System.out.print("-");
         System.out.println ();
     }
@@ -230,6 +252,20 @@ public class DataBase {
         System.out.println (allPersonnel);
         for (int k = 0; k < 60; k++) System.out.print("-");
         System.out.println ();
+    }
+    public void printAllPassiveToDo(){
+        System.out.println ("***All Personnel in the system");
+        for (int k = 0; k < 60; k++) System.out.print("-");
+        System.out.println ();
+        System.out.println ("Passive ToDos");
+        for (ToDo toDo:passiveToDo) {
+            System.out.println (toDo);
+        }
+        for (int k = 0; k < 60; k++) System.out.print("-");
+        System.out.println ();
+    }
+    public void printPrison(){
+       //graph will printed
     }
     private int findMenu(DailyFoodMenu menu){
         for (int i=0;i<menuList.size ();i++){
