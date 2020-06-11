@@ -29,7 +29,10 @@ public class DataBase {
         prison_structure = new ListGraph (5,true);
     }
     public void addMenu(DailyFoodMenu menu){
-        if (menu.getDate ().compareTo (new Date ())<=0){
+        Date todaysDate = new Date();
+        DateFormat df = new SimpleDateFormat ("dd/MM/yyyy");
+        String date = df.format(todaysDate);
+        if (menu.getDate ().compareTo (date) < 0){
             System.out.println ("Your date is less than now, Please use update option.");
         }
         else{
