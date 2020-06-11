@@ -16,8 +16,9 @@ public class DailyFoodMenu {
         return toString ();
     }
 
-    public Date getDate () {
-        return date;
+    public String getDate () {
+        DateFormat df = new SimpleDateFormat ("dd/MM/yyyy");
+        return df.format(date);
     }
 
     public void setDate (Date date) {
