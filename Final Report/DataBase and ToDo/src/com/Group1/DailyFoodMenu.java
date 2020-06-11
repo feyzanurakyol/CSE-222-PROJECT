@@ -3,7 +3,11 @@ package com.Group1;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.NoSuchElementException;
-
+/**
+Date objesi tarihi saatle ve dakika ile basıyor bu yuzden bu obje ile iş yaparken internetde date formatterlar
+var stringe çevirmek için falan onları kullanın direk date kullanmayın bize zaman lazım değil çünkü sadece tarih.
+Bu classı yazacak kişi dikkate alsın...
+*/
 public class DailyFoodMenu {
     //every food in the menu will be added to the list one by one.
     private ArrayList<String> menu;
