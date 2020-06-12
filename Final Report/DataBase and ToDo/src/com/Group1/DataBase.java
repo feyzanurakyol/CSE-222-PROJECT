@@ -28,19 +28,47 @@ public class DataBase {
         allPersonnel = new SkipList<> ();
         prison_structure = new ListGraph (5,true);
     }
-    public void addMenu(DailyFoodMenu menu){
-        Date todaysDate = new Date();
-        DateFormat df = new SimpleDateFormat ("dd/MM/yyyy");
-        String date = df.format(todaysDate);
-        if (menu.getDate ().compareTo (date) < 0){
-            System.out.println ("Your date is less than now, Please use update option.");
-        }
-        else{
+    /**
+     * controlling menu with day matching. if they matched warning
+     * to user. Else add to linkedList.
+     * @param menu added menu.
+     */
+    public static void addMenu(DailyFoodMenu menu){
+        if (findMenu(menu.getDate(),menu.getMeal()) != -1)
+            System.out.println("This day added before. Chech Again!");
+
+        else
             menuList.add (menu);
+
+    }
+
+    /**
+     * deleted menu from taking day
+     * @param day wanted delete day
+     * @return true if deleted
+     */
+    public static boolean deleteMenu(String day){
+        int index =findMenu (day);
+        if (index!=-1){
+            while (index != -1){
+                menuList.remove (index);
+                index =findMenu (day);
+            }
+            return true;
+        }
+        else {
+            return false;
         }
     }
-    public boolean deleteMenu(DailyFoodMenu menu ){
-        int index =findMenu (menu);
+
+    /**
+     * delete specific meal in a day
+     * @param day day
+     * @param meal name of meal
+     * @return true if deleted
+     */
+    public static boolean deleteMenu(String day,String meal){
+        int index =findMenu (day,meal);
         if (index!=-1){
             menuList.remove (index);
             return true;
@@ -49,8 +77,23 @@ public class DataBase {
             return false;
         }
     }
-    public boolean updateMenu(DailyFoodMenu oldMenu, DailyFoodMenu newMenu){
-        int index =findMenu (oldMenu);
+
+    /**
+     * clear menu list
+     */
+    public static void deleteAllMenu(){
+        menuList.clear();
+    }
+
+    /**
+     * update a meal
+     * @param day day
+     * @param meal meal name
+     * @param newMenu new addeed menu
+     * @return true if changed
+     */
+    public static boolean updateMenu(String day,String meal,DailyFoodMenu newMenu){
+        int index = findMenu (day,meal);
         if (index!=-1){
             menuList.set (index,newMenu);
             return true;
@@ -59,11 +102,72 @@ public class DataBase {
             return false;
         }
     }
+
+    /**
+     * get menu
+     * @param index index
+     * @return menu
+     */
     public DailyFoodMenu getMenu(int index){
         if (index<0 || index>menuList.size ()-1)
             throw new ArrayIndexOutOfBoundsException();
         return menuList.get (index);
     }
+
+    /**
+     *
+     * list menu in specific day
+     * @param day food menu.
+     * @param meal name of meal
+     */
+    public void ListMenu(String day,String meal){
+        int index = 0;
+        for (DailyFoodMenu temp : menuList){
+            if (day.equalsIgnoreCase(temp.getDate()) && meal.equalsIgnoreCase(temp.getMeal())){
+                System.out.println(temp.toString());
+            }
+        }
+    }
+
+    /**
+     * find a menu in day
+     * @param day day
+     * @return index if true
+     */
+    private static int findMenu(String day){
+        int i = 0;
+        for (DailyFoodMenu temp : menuList){
+            if (day.equalsIgnoreCase(temp.getDate())){
+                return i;
+            }
+            i++;
+        }
+        return -1;
+    }
+    public static void ListMenu(){
+        for (DailyFoodMenu temp : menuList){
+            System.out.println(temp.toString());
+        }
+    }
+
+
+    /**
+     * find a meal in a day
+     * @param day day
+     * @param meal name of meal
+     * @return index if true
+     */
+    private static int findMenu(String day, String meal){
+        int i = 0;
+        for (DailyFoodMenu temp : menuList){
+            if (day.equalsIgnoreCase(temp.getDate()) && meal.equalsIgnoreCase(temp.getMeal())){
+                return i;
+            }
+            i++;
+        }
+        return -1;
+    }
+
     public void addVisitor(Inmate prisoner,Set<Visitor> visitorSet){
         visitorsMap.put (prisoner,visitorSet);
     }
@@ -269,14 +373,6 @@ public class DataBase {
     }
     public void printPrison(){
        //graph will printed
-    }
-    private int findMenu(DailyFoodMenu menu){
-        for (int i=0;i<menuList.size ();i++){
-            if (menuList.get (i).getDate ().compareTo (menu.getDate ())==0){
-                return i;
-            }
-        }
-        return -1;
     }
 
 }
