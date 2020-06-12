@@ -1,109 +1,151 @@
-package com.Group1;
-public class Visitor {
-	String name;
-	String surname;
-	String TCNumber;
-	String inmateNumber;
-	String telephoneNumber;
-	String date;
-	String entrance_time;
-	String exit_time;
-	
-	public Visitor(String name, String surname, String TCNumber, String inmateNumber, String telephoneNumber, String date, String entrance_time)
-	{
+
+import java.util.*;
+import java.util.Scanner;
+
+
+public class Visitor{
+	/**Data fields*/
+	protected String name;
+	protected String surname;
+	/*TCNumber yerine tcNumber yazıldı database classında 
+	visitor.TCNumber yerine tcNumber yazılmalı*/
+	protected String tcNumber;
+	protected String inmateNumber;
+	protected String telephoneNumber;
+	protected String date;
+	protected String entranceTime;
+	protected String exitTime;
+
+
+	/**Constructor eight parameters, includes name,surname,tcnumber,
+	inmate number, teleohone number, date, entrance time and exit time.
+	*/
+	public Visitor(String name,String surname,String tcNumber,String inmateNumber,String telephoneNumber,String date,String entranceTime,String exitTime){
 		this.name = name;
 		this.surname = surname;
-		this.TCNumber = TCNumber;
+		this.tcNumber = tcNumber;
 		this.inmateNumber = inmateNumber;
 		this.telephoneNumber = telephoneNumber;
 		this.date = date;
-		this.entrance_time = entrance_time;
-		this.exit_time = null;
+		this.entranceTime = entranceTime;
+		this.exitTime = null;	//now is null
 	}
-	
-	public String getName()
-	{
+	/**Get visitor's name*/
+	public String getName(){
 		return name;
 	}
-	
-	public String getSurname()
-	{
+	/**Get visitor's surname*/
+	public String getSurname(){
 		return surname;
 	}
-	
-	public String getTCNumber()
-	{
-		return TCNumber;
+	/**Get visitor's TCNumber*/
+	public String getTCNumber(){
+		return tcNumber;
 	}
-	
-	public String getInmateNumber()
-	{
+	/**Get visitor's InmateNumber*/
+	public String getInmateNumber(){
 		return inmateNumber;
 	}
-	
-	public String getTelephoneNumber()
-	{
+	/**Get visitor's TelephoneNumber*/
+	public String getTelephoneNumber(){
 		return telephoneNumber;
 	}
-	
-	public String getDate()
-	{
+	/**Get visitor's Date*/
+	public String getDate(){
 		return date;
 	}
-	
-	public String getEntranceTime()
-	{
-		return entrance_time;
+	/**Get visitor's EntranceTime*/
+	public String getEntranceTime(){
+		return entranceTime;
 	}
-	
-	public String getExitTime()
-	{
-		return exit_time;
+	/**Get visitor's ExitTime*/
+	public String exitTime(){
+		return exitTime;
 	}
-	
-	public void setName(String name)
-	{
+	/**Set visitor's name
+	*@param name Visitor name
+	*/
+	public void setName(String name){
 		this.name = name;
 	}
-	
-	public void setSurname(String surname)
-	{
+	/**Set visitor's surname
+	*@param surname Visitor surname
+	*/
+	public void setSurname(String surname){
 		this.surname = surname;
 	}
-	
-	public void setTCNumber(String TCNumber)
-	{
-		this.TCNumber = TCNumber;
+	/**Set visitor's TCNumber
+	*@param tcNumber Visitor TCNumber
+	*/
+	public void setTCNumber(String tcNumber){
+		this.tcNumber = tcNumber;
 	}
-	
-	public void setInmadeName(String inmateNumber)
-	{
+	/**Set visitor's inmate number
+	*@param inmateNumber Visitor inmateNumber
+	*/
+	public void setInmateNumber(String inmateNumber){
 		this.inmateNumber = inmateNumber;
 	}
-	
-	public void setTelephoneNumner(String telephoneNumber)
-	{
+	/**Set visitor's telephone number
+	*@param telephoneNumber Visitor telephoneNumber
+	*/
+	public void setTelephoneNumber(String telephoneNumber){
 		this.telephoneNumber = telephoneNumber;
 	}
-	
-	public void setDate(String date)
-	{
+	/**Set visitor's date
+	*@param date Visitor date
+	*/
+	public void setDate(String date){
 		this.date = date;
 	}
-	
-	public void setEntranceTime(String entrance_time)
-	{
-		this.entrance_time = entrance_time;
+	/**Set visitor's entranceTime
+	*@param entranceTime Visitor entranceTime
+	*/
+	public void setEntranceTime(String entranceTime){
+		this.entranceTime = entranceTime;
 	}
-	
-	public void setExitTime(String exit_time)
-	{
-		this.exit_time = exit_time;
+	/**Set visitor's entranceTime
+	*@param exitTime Visitor entranceTime
+	*/
+	public void setExitTime(String exitTime){
+		this.exitTime = exitTime;
 	}
-	
-	
-	
-	
-	
-	
+	/**
+	*Visitor informations is added to set, firstly, then
+	added database with inmate information.
+	*@param base Database
+	*@param mate Inmate info
+	*/
+	public void addVisitor(DataBase base,Inmate mate){
+		Set<Visitor> setVisitor = new HashSet<>();
+		setVisitor.add(this);
+		base.addVisitor(mate,setVisitor);
+	}
+	/**
+	*Visitor informations is removed method,
+	call database method and delete it.
+	*@param base Database
+	*@param mate Inmate info
+	*@return Return type is Visitor, if have not deleted visitor, return null
+	*/
+	public Visitor deleteVisitor(DataBase base, Inmate mate){
+		Visitor removeVisitor;
+		removeVisitor = base.deleteVisitor(mate,this);
+		return removeVisitor;
+	}
+	/**
+	*Get visitor information, Visitor TC Number entering is method inside.
+	*@param base Database
+	*@return Return type is Visitor, if TC is not have, return null
+	*/
+	public Visitor getVisitorWithTC(DataBase base){
+		Scanner input = new Scanner(System.in);
+		System.out.print("Please Enter Visitor TC Number: ");
+		String number = input.nextLine();
+
+		Visitor getVisitor;
+		getVisitor = base.getVisitorWithTC(number);
+		return getVisitor;
+	}
+
 }
