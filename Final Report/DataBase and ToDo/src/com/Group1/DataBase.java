@@ -185,7 +185,7 @@ public class DataBase {
         Collection<Set<Visitor>> values = visitorsMap.values ();
         for (Set<Visitor> visitorSet : values) {
             for (Visitor visitor:visitorSet) {
-                if (visitor.TCNumber.equals (TC)){
+                if (visitor.tcNumber.equals (TC)){
                     return visitor;
                 }
             }
