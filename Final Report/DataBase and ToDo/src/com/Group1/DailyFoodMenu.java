@@ -1,31 +1,44 @@
 package com.Group1;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.NoSuchElementException;
-/**
-Date objesi tarihi saatle ve dakika ile basıyor bu yuzden bu obje ile iş yaparken internetde date formatterlar
-var stringe çevirmek için falan onları kullanın direk date kullanmayın bize zaman lazım değil çünkü sadece tarih.
-Bu classı yazacak kişi dikkate alsın...
-*/
+
 public class DailyFoodMenu {
     //every food in the menu will be added to the list one by one.
     private ArrayList<String> menu;
-    private Date date; //date is id of menu at that data there can be just one menu.
-    public String getAllMenu () {
-        return toString ();
+    // Date change as a String. Because java.util.Date giving all time.
+    // In this part thinking daily food as weekly food. Week's days.
+    private String date; //date is id of menu at that data there can be just one menu.
+    private String meal; //name of meal (breakfast, lunch or dinner
+
+    /**
+     *
+     * @param menu all foods
+     * @param date date
+     * @param meal name of meal (breakfast, lunch or dinner
+     */
+    public DailyFoodMenu(ArrayList<String> menu,String date,String meal) {
+        this.menu = menu;
+        this.date = date;
+        this.meal = meal;
+    }
+
+    public ArrayList<String> getAllMenu () {
+        return menu;
     }
 
     public String getDate () {
-        DateFormat df = new SimpleDateFormat ("dd/MM/yyyy");
-        return df.format(date);
+        return date;
+    }
+    public String getMeal () {
+        return meal;
     }
 
-    public void setDate (Date date) {
+    public void setDate (String date) {
         this.date = date;
     }
 
-    public ArrayList<String> getMenu (Date date) {
+    public ArrayList<String> getMenu (String date) {
         if (this.date.equals (date)){
             return menu;
         }
@@ -33,14 +46,11 @@ public class DailyFoodMenu {
             throw new NoSuchElementException ();
     }
 
-    public void setAllMenu (ArrayList<String> menu) {
-        this.menu = menu;
-    }
+
     @Override
     public String toString () {
        StringBuilder stringBuilder = new StringBuilder ();
-        stringBuilder.append ("***Date: " +date+"***");
-        stringBuilder.append ("\n");
+        stringBuilder.append(date +" - " +  meal + "\n");
         for (String s : menu) {
             stringBuilder.append (s);
             stringBuilder.append ("\n");
@@ -48,3 +58,4 @@ public class DailyFoodMenu {
        return stringBuilder.toString ();
     }
 }
+
