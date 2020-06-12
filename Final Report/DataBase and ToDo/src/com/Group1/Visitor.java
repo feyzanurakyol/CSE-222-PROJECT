@@ -18,7 +18,7 @@ public class Visitor{
 
 
 	/**Constructor eight parameters, includes name,surname,tcnumber,
-	inmate number, teleohone number, date, entrance time and exit time.
+	inmate number, telephone number, date, entrance time and exit time.
 	*/
 	public Visitor(String name,String surname,String tcNumber,String inmateNumber,String telephoneNumber,String date,String entranceTime,String exitTime){
 		this.name = name;
