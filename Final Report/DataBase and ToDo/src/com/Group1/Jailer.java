@@ -42,8 +42,41 @@ public class Jailer extends Personnel{
     }
 
     @Override
-    public void personnelInterface() {
-
+       public void personnelInterface() {
+        int k;
+        for ( k = 0; k < 45; k++) System.out.print("-");
+        System.out.print("\n"+"   ");
+        System.out.println("Welcome Jailer " + name);
+        for ( k = 0; k < 45; k++) System.out.print("-");
+        System.out.print("\n"+"   ");
+        System.out.println("What Do you want to do ?");
+        for ( k = 0; k < 45; k++) System.out.print("-");
+        System.out.print("\n"+"   ");
+        System.out.println("[1] Add a visitor");
+        for ( k = 0; k < 45; k++) System.out.print("-");
+        System.out.print("\n"+"   ");
+        System.out.println("[2] Remove a visitor");
+        for ( k = 0; k < 45; k++) System.out.print("-");
+        System.out.print("\n"+"   ");
+        System.out.println("[3] Clear all visitors");
+        for ( k = 0; k < 45; k++) System.out.print("-");
+        System.out.print("\n"+"   ");
+        System.out.println("[4] Get a prisoner");
+        for ( k = 0; k < 45; k++) System.out.print("-");
+        System.out.print("\n"+"   ");
+        System.out.println("[5] Get your shift our");
+        for ( k = 0; k < 45; k++) System.out.print("-");
+        System.out.print("\n"+"   ");
+        System.out.println("[6] Get your department");
+        for ( k = 0; k < 45; k++) System.out.print("-");
+        System.out.print("\n"+"   ");
+        System.out.println("[7] Check census");
+        for ( k = 0; k < 45; k++) System.out.print("-");
+        System.out.print("\n"+"   ");
+        System.out.println("[0] Main Menu.");
+        for ( k = 0; k < 45; k++) System.out.print("-");
+        System.out.print("\n");
+        System.out.print( "Answer: ");
     }
 
     /**
