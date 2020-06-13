@@ -58,6 +58,9 @@ public class ChiefJailer extends Jailer {
         System.out.println("[10] Set your your department");
         for ( k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n"+"   ");
+        System.out.println("[11] Check census");
+        for ( k = 0; k < 45; k++) System.out.print("-");
+        System.out.print("\n"+"   ");
         System.out.println("[0] Main Menu.");
         for ( k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n");
