@@ -4,7 +4,6 @@ public class Inmate implements Comparable<Inmate> {
     //customer can give information other than id.
     //give id programmatically and check whether unique or not.
     private String id;
-    private static int ids_used=0;
     private String name;
     private CrimeType crimeType;
     private int remainingDay;
