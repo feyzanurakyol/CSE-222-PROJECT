@@ -1,4 +1,4 @@
-package com.Akif;
+package com.Group1;
 
 import java.util.Random;
 
