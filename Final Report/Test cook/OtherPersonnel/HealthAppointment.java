@@ -5,15 +5,22 @@ import java.util.Date;
 public class HealthAppointment implements Comparable<HealthAppointment> {
     private int apID;
     private Date date;
-    private int ownerID;
+    private String ownerID;
     private String explanation;
+    private HealthStatus healthStatus;
 
-    public HealthAppointment (Date date, int ownerID, String explanation) {
+
+    public HealthAppointment (Date date, String ownerID, String explanation, int apID, HealthStatus healthStatus) {
         this.date = date;
         this.ownerID = ownerID;
         this.explanation = explanation;
+        this.apID = apID;
+        this.healthStatus = healthStatus;
     }
 
+    public HealthStatus getHealthStatus() {
+        return healthStatus;
+    }
     public int getApID () {
         return apID;
     }
@@ -30,11 +37,11 @@ public class HealthAppointment implements Comparable<HealthAppointment> {
         this.date = date;
     }
 
-    public int getOwnerID () {
+    public String getOwnerID () {
         return ownerID;
     }
 
-    public void setOwnerID (int ownerID) {
+    public void setOwnerID (String ownerID) {
         this.ownerID = ownerID;
     }
 
