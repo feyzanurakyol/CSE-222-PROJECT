@@ -1,42 +1,34 @@
-package com.Group1;
 public class Inmate implements Comparable<Inmate> {
     //ids are unique so give id automatically while inmate creating
     //customer can give information other than id.
     //give id programmatically and check whether unique or not.
-    private int id;
+    private String id;
     private String name;
-    private String crimeType;
+    private CrimeType crimeType;
     private int remainingDay;
     private int wardNo;
     private HealthStatus healthStatus;
 
-    public Inmate (String name, String crimeType, int remainingDay, int wardNo, HealthStatus healthStatus) {
+    public Inmate (String name, CrimeType crimeType, String id, int remainingDay, int wardNo, HealthStatus healthStatus) {
         //give id programmatically here.
         this.name = name;
         this.crimeType = crimeType;
         this.remainingDay = remainingDay;
         this.wardNo = wardNo;
         this.healthStatus = healthStatus;
-    }
-    public Inmate (int id,String name, String crimeType, int remainingDay, int wardNo, HealthStatus healthStatus) {
         this.id = id;
-        this.name = name;
-        this.crimeType = crimeType;
-        this.remainingDay = remainingDay;
-        this.wardNo = wardNo;
-        this.healthStatus = healthStatus;
+
     }
     //this constructor is used to search an Inmate.
-    public Inmate(int id){
-        this("No info","No info",0,0,new HealthStatus ());
-        this.id=id;
+    public Inmate(String id){
+        this("No info",CrimeType.INFRACTION, id, 0,0,new HealthStatus ());
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -48,11 +40,11 @@ public class Inmate implements Comparable<Inmate> {
         this.name = name;
     }
 
-    public String getCrimeType() {
+    public CrimeType getCrimeType() {
         return crimeType;
     }
 
-    public void setCrimeType(String crimeType) {
+    public void setCrimeType(CrimeType crimeType) {
         this.crimeType = crimeType;
     }
 
@@ -95,6 +87,6 @@ public class Inmate implements Comparable<Inmate> {
     @Override
     public int compareTo (Inmate o) {
         //compare to inmate ID
-        return 0;
+        return id.compareTo(o.id);
     }
 }
