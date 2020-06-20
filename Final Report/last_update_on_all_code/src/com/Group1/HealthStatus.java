@@ -5,18 +5,30 @@ import java.util.ArrayList;
 public class HealthStatus {
     private ArrayList<HealthAppointment> healthAppointments;
     private String bloodGroup;
-    private double length;
+    private String lastControlResult;
+    private double height;
     private double weight;
     private double pulse;//nabız
+    private boolean hospitalized;
     public HealthStatus(){
-        //fill all data as default here.
+        this("none", "none", 0,0,0, false);
     }
-    public HealthStatus (String bloodGroup, double length, double weight, double pulse) {
+    public HealthStatus (String bloodGroup, String lastControlResult, double height, double weight, double pulse, boolean hospitalized) {
         this.bloodGroup = bloodGroup;
-        this.length = length;
+        this.lastControlResult = lastControlResult;
+        this.height = height;
         this.weight = weight;
         this.pulse = pulse;
         healthAppointments = new ArrayList<> ();
+        this.hospitalized = hospitalized;
+    }
+
+    public boolean isHospitalized() {
+        return hospitalized;
+    }
+
+    public void setHospitalized(boolean hospitalized) {
+        this.hospitalized = hospitalized;
     }
 
     public String getBloodGroup () {
@@ -27,12 +39,20 @@ public class HealthStatus {
         this.bloodGroup = bloodGroup;
     }
 
-    public double getLength () {
-        return length;
+    public String getLastControlResult () {
+        return lastControlResult;
     }
 
-    public void setLength (double length) {
-        this.length = length;
+    public void setLastControlResult (String lastControlResult) {
+        this.lastControlResult = lastControlResult;
+    }
+
+    public double getHeight () {
+        return height;
+    }
+
+    public void setHeight (double length) {
+        this.height= length;
     }
 
     public double getWeight () {
@@ -58,14 +78,15 @@ public class HealthStatus {
     public void setHealthAppointments (ArrayList<HealthAppointment> healthAppointments) {
         this.healthAppointments = healthAppointments;
     }
-
     @Override
-    public String toString () {
-        return "HealthStatus{" +
-                "bloodGroup='" + bloodGroup + '\'' +
-                ", length=" + length +
-                ", weight=" + weight +
-                ", pulse=" + pulse +
-                '}';
+    public String toString() {
+        return "Inmate Information\n" +
+                "\nLength = " + height + '\'' +
+                "\nWeight = " + weight + '\'' +
+                "\nBlood Group = " + bloodGroup +
+                "\nPulse = " + pulse +
+                "\nLast Report : " + lastControlResult;
     }
+
 }
+
