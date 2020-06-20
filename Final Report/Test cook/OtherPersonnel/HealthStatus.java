@@ -5,19 +5,29 @@ public class HealthStatus {
     private ArrayList<HealthAppointment> healthAppointments;
     private String bloodGroup;
     private String lastControlResult;
-    private double length;
+    private double height;
     private double weight;
     private double pulse;//nabız
+    private boolean hospitalized;
     public HealthStatus(){
-        //fill all data as default here.
+        this("none", "none", 0,0,0, false);
     }
-    public HealthStatus (String bloodGroup, String lastControlResult, double length, double weight, double pulse) {
+    public HealthStatus (String bloodGroup, String lastControlResult, double height, double weight, double pulse, boolean hospitalized) {
         this.bloodGroup = bloodGroup;
         this.lastControlResult = lastControlResult;
-        this.length = length;
+        this.height = height;
         this.weight = weight;
         this.pulse = pulse;
         healthAppointments = new ArrayList<> ();
+        this.hospitalized = hospitalized;
+    }
+
+    public boolean isHospitalized() {
+        return hospitalized;
+    }
+
+    public void setHospitalized(boolean hospitalized) {
+        this.hospitalized = hospitalized;
     }
 
     public String getBloodGroup () {
@@ -36,12 +46,12 @@ public class HealthStatus {
         this.lastControlResult = lastControlResult;
     }
 
-    public double getLength () {
-        return length;
+    public double getHeight () {
+        return height;
     }
 
-    public void setLength (double length) {
-        this.length = length;
+    public void setHeight (double length) {
+        this.height= length;
     }
 
     public double getWeight () {
@@ -70,7 +80,7 @@ public class HealthStatus {
     @Override
     public String toString() {
         return "Inmate Information\n" +
-                "\nLength = " + length + '\'' +
+                "\nLength = " + height + '\'' +
                 "\nWeight = " + weight + '\'' +
                 "\nBlood Group = " + bloodGroup +
                 "\nPulse = " + pulse +

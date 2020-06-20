@@ -4,13 +4,15 @@ import OtherPersonnel.*;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class DataBase {
+
     private static List<DailyFoodMenu> menuList;
-    private Queue<HealthAppointment> healthAppointmentsQueue;
+    private static Queue<HealthAppointment> healthAppointmentsQueue;
     private SkipList<Personnel> allPersonnel;
+    private static AVLTree<Inmate> prisoners = new AVLTree<>();
+
     public DataBase(){
         menuList = new LinkedList<> ();
         healthAppointmentsQueue = new LinkedList<> ();
@@ -157,15 +159,30 @@ public class DataBase {
         return -1;
     }
 
-    public void addHealthAppointment(HealthAppointment appointment){
-
+    public static void addHealthAppointment(HealthAppointment appointment){
+        healthAppointmentsQueue.add(appointment);
     }
-    public void deleteHealthAppointment(HealthAppointment appointment){
-
+    //SHOULD BE USED VERY REARLY!!!!
+    public static void deleteHealthAppointment(HealthAppointment appointment){
+        healthAppointmentsQueue.remove(appointment);
     }
 
-    public void addPersonnel(Personnel inmate){
+    /**
+     * doctor uses it
+     * @return returns the next appointment doctor should go through
+     */
+    public static HealthAppointment deleteHealthAppointmentFromTop(){
+        if(!healthAppointmentsQueue.isEmpty())
+            return healthAppointmentsQueue.poll();
+        else
+            return null;
+    }
 
+    public static void addInmate(Inmate inmate){
+        prisoners.add(inmate);
+    }
+    public static Inmate getInmateById(String inmate_id){
+        return prisoners.find(new Inmate(inmate_id));
     }
     public void deletePersonnel(Personnel inmate ){
 

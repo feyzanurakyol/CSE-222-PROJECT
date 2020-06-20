@@ -342,6 +342,14 @@ public class DataBase {
             i++;
         }
     }
+     /***
+     * Add given id in arraylist
+     * @param id will be added.
+     */
+    public void addID(int id){
+        IDList.add(id);
+    }
+
     /***
      * This method checks given id is used or not ?
      * @param id will be checked

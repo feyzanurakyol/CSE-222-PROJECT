@@ -1,7 +1,3 @@
-package OtherPersonnel;
-
-import DataBase.DataBase;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
