@@ -218,16 +218,7 @@ public class Governor {
        
     }
 	
-	//governor'ýn yapacaðý iþlemler ayrý bir class'a alýnabilir
-	//governor için add daily to do seçeneði eklenicek ve yapýlacak iþleri sýrasýyla giricek.
-    
-    
-    public Inmate addInmateForMenu() {
-    	return null;
-    }
-	
-    
-    
+
     
 	public void add_daily_to_do(DataBase database, ToDo todo, int urgency) {
 		if(urgency == 0 && database.addToDoToTheTop(todo)) {
