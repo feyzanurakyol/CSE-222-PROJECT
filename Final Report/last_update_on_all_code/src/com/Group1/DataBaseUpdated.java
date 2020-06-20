@@ -10,7 +10,7 @@ import java.util.List;
  * It keeps data by using List,Queue and Binary Search Tree.
  * We wrote this class for reusable purpose, we will use this operations later.
  * */
-public class DataBase {
+public class DataBaseUpdated {
     //updated data structures
     private List<DailyFoodMenu> menuList ;
     private NavigableMap<Inmate, NavigableSet<Visitor>> visitorsMap;
