@@ -1,4 +1,4 @@
-/* Bu class ikiye ayrılacak. Governor Interface'ini ve interface methodlari başka bir classa alinabilir*/
+
 package com.Group1;
 
 import java.util.ArrayList;
@@ -218,8 +218,8 @@ public class Governor {
        
     }
 	
-	//governor'ın yapacağı işlemler ayrı bir class'a alınabilir
-	//governor için add daily to do seçeneği eklenicek ve yapılacak işleri sırasıyla giricek.
+	//governor'Ã½n yapacaÃ°Ã½ iÃ¾lemler ayrÃ½ bir class'a alÃ½nabilir
+	//governor iÃ§in add daily to do seÃ§eneÃ°i eklenicek ve yapÃ½lacak iÃ¾leri sÃ½rasÃ½yla giricek.
     
     
     public Inmate addInmateForMenu() {
