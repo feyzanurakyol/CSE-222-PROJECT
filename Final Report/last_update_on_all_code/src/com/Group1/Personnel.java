@@ -6,11 +6,13 @@ enum JobType {
     Jailer,
     Doctor,
     Cleaner,
-    Cook
+    Cook,
+    Undefined
 }
 public class Personnel implements Comparable<Personnel> {
     protected String name;
     protected String surname;
+
     //ids are unique so give id automatically while inmate creating
     //customer can give information other than id.
     //give id programmatically and check whether unique or not.
@@ -18,39 +20,31 @@ public class Personnel implements Comparable<Personnel> {
     protected JobType job;
     protected HealthStatus healthStatus;
     protected String password;
+
     //mesai saati
-    private shiftLinkedList shift;
+    private PersonnelShift shift;
 
-    private static class shiftLinkedList{
-        protected String day;
-        protected String checkIn;
-        protected String checkOut;
-    }
-    public Personnel(){
-
-    }
      public Personnel(int id){
-        this(-1,"Noinfo","Noinfo",JobType.Jailer,new HealthStatus ());
-        this.id = id;
+        this(id, "NoInfo", "NoInfo", "", JobType.Undefined, new HealthStatus(), new PersonnelShift());
     }
-    protected Personnel(int id,String name, String surname,JobType job,HealthStatus healthStatus){
-        this.name = name;
-        this.surname = surname;
-        //give id programmatically here and check whether unique or not.
-        this.job=job;
-        this.healthStatus =healthStatus;
-        this.id = id;
-    }
-    protected Personnel(int id , String password){
-        this(-1,"Noinfo","Noinfo",JobType.Jailer,new HealthStatus ());
-        this.id=id;
-        this.password = password;
-    }
-    // işe giriş yaptığında kayıt et
-    protected void checkInTime(){    }
 
-    // işten çıkış saati
-    protected void checkOutTime(){    }
+    public Personnel(int id , String password){
+        this(id, "Noinfo", "Noinfo", password, JobType.Undefined, new HealthStatus (), new PersonnelShift());
+    }
+
+    public Personnel(int id,String name, String surname, String password, JobType job){
+        this(id, name, surname, password, job, new HealthStatus(), new PersonnelShift());
+    }
+
+    public Personnel(int id, String name, String surname, String password, JobType job, HealthStatus health, PersonnelShift shift) {
+         this.name = name;
+         this.surname = surname;
+         this.id = id;
+         this.job = job;
+         healthStatus = health;
+         this.password = Encryption.encryptPassword(password);
+         this.shift = shift;
+    }
 
     @Override
     public int compareTo (Personnel o) {
