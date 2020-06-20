@@ -23,6 +23,7 @@ public class DataBase {
     private List<Jailer> jailerList ;
     private boolean fileFlag = false;
     private ReadAndWriteFile readAndWriteFile;
+    private ArrayList<Integer> IDList ;
     public DataBase(){
         menuList = new LinkedList<> ();
         visitorsMap = new TreeMap<> ();
@@ -34,6 +35,7 @@ public class DataBase {
         prison_structure = new ListGraph (5,true);
         jailerList = new ArrayList<> ();
         readAndWriteFile = new ReadAndWriteFile (this);
+        IDList = new ArrayList<>();
     }
     public void openFlag(){fileFlag=true;}
     public void closeFlag(){fileFlag=false;}
@@ -337,7 +339,19 @@ public class DataBase {
             i++;
         }
     }
-
+    /***
+     * This method checks given id is used or not ?
+     * @param id will be checked
+     * @return true if it is not used
+     */
+    public boolean IDUsed(int id){
+        for (int i = 0 ; i< IDList.size();i++){
+            if (IDList.get(i) == id){
+                return true;
+            }
+        }
+        return false;
+    }
     //------------Printing-----------------------------------------------------------------
     public void printAllData(){
         System.out.println ("***All Data is in the system***");
