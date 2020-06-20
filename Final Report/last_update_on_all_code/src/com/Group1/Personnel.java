@@ -29,6 +29,10 @@ public class Personnel implements Comparable<Personnel> {
     public Personnel(){
 
     }
+     public Personnel(int id){
+        this(-1,"Noinfo","Noinfo",JobType.Jailer,new HealthStatus ());
+        this.id = id;
+    }
     protected Personnel(int id,String name, String surname,JobType job,HealthStatus healthStatus){
         this.name = name;
         this.surname = surname;
