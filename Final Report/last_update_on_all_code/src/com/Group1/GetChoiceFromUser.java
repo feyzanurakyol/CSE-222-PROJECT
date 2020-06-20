@@ -98,9 +98,10 @@ public class GetChoiceFromUser {
     }
      /**
      * This method gets an integer number from user as an id.
+     * @param data databas reference
      * @return Return number that entered by user
      * */
-    public static int getIDFromUser(Data data){
+    public static int getIDFromUser(DataBase data){
         Scanner input = new Scanner(System.in);
         boolean is_in;
         int id=0;
