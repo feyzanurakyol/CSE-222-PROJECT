@@ -96,4 +96,35 @@ public class GetChoiceFromUser {
         }
         return choice;
     }
+     /**
+     * This method gets an integer number from user as an id.
+     * @param data databas reference
+     * @return Return number that entered by user
+     * */
+    public static int getIDFromUser(DataBase data){
+        Scanner input = new Scanner(System.in);
+        boolean is_in;
+        int id=0;
+        try {
+            do {
+                System.out.print("Enter your ID as Number: ");
+                id = input.nextInt();
+                is_in=false;
+                if (id<10000 && id>=100000){
+                    System.out.println("ID should be 5 digit!");
+                    is_in=true;
+                }
+                if (data.IDUsed(id)){
+                    System.out.println("This ID has used before!");
+                    is_in=true;
+                }
+            }while(is_in);
+            data.addID(id);
+        }
+        catch (Exception e){
+            System.out.print("Please enter a valid value!\n");
+            input.nextLine();
+        }
+        return id;
+    }
 }
