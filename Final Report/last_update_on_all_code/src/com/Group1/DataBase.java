@@ -302,6 +302,9 @@ public class DataBase {
     public boolean checkPassword(int ID,String pass){
       return allPersonnel.contains (new Personnel (ID,pass));
     }
+    public Personnel getPersonnel(int id){
+        return allPersonnel.find (new Personnel (id));
+    }
     public void addJailer(Jailer jailer){
         jailerList.add (jailer);
         allPersonnel.add (jailer);
