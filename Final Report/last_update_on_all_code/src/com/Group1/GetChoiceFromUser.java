@@ -107,14 +107,14 @@ public class GetChoiceFromUser {
         int id=0;
         try {
             do {
-                System.out.print("Enter your ID as Number: ");
+                System.out.print("Enter ID as a 5 digit Number: ");
                 id = input.nextInt();
                 is_in=false;
-                if (id<10000 && id>=100000){
+                if (id<10000 || id>=100000){
                     System.out.println("ID should be 5 digit!");
                     is_in=true;
                 }
-                if (data.IDUsed(id)){
+                else if (data.IDUsed(id)){
                     System.out.println("This ID has used before!");
                     is_in=true;
                 }
