@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 public class ChiefJailer extends Jailer {
 
-    public ChiefJailer(String name, String surname, int id, String department, ArrayList<String> shiftHour){
-        super(name,surname, id, department, shiftHour);
+    public ChiefJailer(String name, String surname, int id, HealthStatus healthStatus,String department, ArrayList<String> shiftHour){
+        super(name,surname,id,healthStatus,department,shiftHour);
         job = JobType.ChiefJailer;
     }
 
