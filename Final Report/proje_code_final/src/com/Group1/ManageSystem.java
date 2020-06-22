@@ -11,6 +11,8 @@ public class ManageSystem {
         ManageGovernor manageGovernor = new ManageGovernor (data);
         ManageDoctor manageDoctor = new ManageDoctor (data);
         ManageCook manageCook = new ManageCook (data);
+        ManageJailer manageJailer = new ManageJailer (data);
+        ManageChiefJailer manageChiefJailer = new ManageChiefJailer (data);
         Validate validator = new Validate(data);
         int choice,id;
         do{
@@ -27,10 +29,10 @@ public class ManageSystem {
                         manageDoctor.manage (personnel);
                     else if (personnel.job==JobType.Cook)
                         manageCook.manage (personnel);
-                    /*else if (personnel.job==JobType.ChiefJailer)
-                    //manageGovernor.manage (personnel);
+                    else if (personnel.job==JobType.ChiefJailer)
+                        manageChiefJailer.manage (personnel);
                     else if (personnel.job==JobType.Jailer)
-                    //manageGovernor.manage (personnel);*/
+                        manageJailer.manage (personnel);
                 }
                 else
                     System.out.println("Your ID or Password Wrong!");
@@ -40,7 +42,10 @@ public class ManageSystem {
                 for ( k = 0; k < 45; k++) System.out.print("-");
                 System.out.print("\n");
                 System.out.println ("***Prison Current Status***");
-                System.out.println ("Alert of State: No");
+                if (data.getAlert ())
+                    System.out.println ("Alert of State: Yes ");
+                else
+                    System.out.println ("Alert of State: No ");
                 if (data.toDoSize ()==0)
                     System.out.println ("No ToDo! ");
                 else{

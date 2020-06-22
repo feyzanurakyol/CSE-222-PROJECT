@@ -110,46 +110,36 @@ public class Visitor implements Comparable<Visitor>{
 	public void setExitTime(String exitTime){
 		this.exitTime = exitTime;
 	}
-	/**
-	*Visitor informations is added to set, firstly, then
-	added database with inmate information.
-	*@param base Database
-	*@param mate Inmate info
-	*/
-	public void addVisitor(DataBase base,Inmate mate){
-		NavigableSet<Visitor> setVisitor = new TreeSet<> ();
-		setVisitor.add(this);
-		base.addVisitor(mate,setVisitor);
-	}
-	/**
-	*Visitor informations is removed method,
-	call database method and delete it.
-	*@param base Database
-	*@param mate Inmate info
-	*@return Return type is Visitor, if have not deleted visitor, return null
-	*/
-	public Visitor deleteVisitor(DataBase base, Inmate mate){
-		Visitor removeVisitor;
-		removeVisitor = base.deleteVisitor(mate,this);
-		return removeVisitor;
-	}
-	/**
-	*Get visitor information, Visitor TC Number entering is method inside.
-	*@param base Database
-	*@return Return type is Visitor, if TC is not have, return null
-	*/
-	public Visitor getVisitorWithTC(DataBase base){
-		Scanner input = new Scanner(System.in);
-		System.out.print("Please Enter Visitor TC Number: ");
-		String number = input.nextLine();
-
-		Visitor getVisitor;
-		getVisitor = base.getVisitorWithTC(number);
-		return getVisitor;
-	}
-
 	@Override
 	public int compareTo (Visitor o) {
 		return this.tcNumber.compareTo (o.tcNumber);
+	}
+	@Override
+	public boolean equals (Object o) {
+		if (this == o) return true;
+		if (o == null || getClass () != o.getClass ()) return false;
+		Visitor visitor = (Visitor) o;
+		return inmateNumber == visitor.inmateNumber &&
+				name.equals (visitor.name) &&
+				surname.equals (visitor.surname) &&
+				tcNumber.equals (visitor.tcNumber) &&
+				telephoneNumber.equals (visitor.telephoneNumber) &&
+				date.equals (visitor.date) &&
+				entranceTime.equals (visitor.entranceTime) &&
+				exitTime.equals (visitor.exitTime);
+	}
+
+	@Override
+	public String toString () {
+		return "Visitor{" +
+				"name='" + name + '\'' +
+				", surname='" + surname + '\'' +
+				", tcNumber='" + tcNumber + '\'' +
+				", inmateNumber=" + inmateNumber +
+				", telephoneNumber='" + telephoneNumber + '\'' +
+				", date='" + date + '\'' +
+				", entranceTime='" + entranceTime + '\'' +
+				", exitTime='" + exitTime + '\'' +
+				'}';
 	}
 }

@@ -13,7 +13,7 @@ public class GovernorInterfaceInfo {
         WorkPlace workPlace = place ();
         return new Personnel (id,name,surname,Encryption.encryptPassword (password),JobType.Jailer,healthStatus,personnelShift,workPlace);
     }
-    private static HealthStatus getHealthInfo(){
+    public static HealthStatus getHealthInfo(){
         String bloodGroup = GetChoiceFromUser.getStringFromUser ("Enter blood Group: ");
         String lastControlResult = GetChoiceFromUser.getStringFromUser ("Enter Last Control Result: ");
         double height = GetChoiceFromUser.getDouble ("Enter Height: ");
@@ -21,7 +21,7 @@ public class GovernorInterfaceInfo {
         double pulse = GetChoiceFromUser.getDouble ("Enter pulse: ");
         return new HealthStatus (bloodGroup,lastControlResult,height,weight,pulse);
     }
-    private static PersonnelShift getShiftInfo(){
+    public static PersonnelShift getShiftInfo(){
         String shift = GetChoiceFromUser.getStringFromUser ("Enter Shift Time(daytime,evening,night): ");
         ArrayList<Days> arrayList = new ArrayList<> ();
         do {
@@ -34,7 +34,7 @@ public class GovernorInterfaceInfo {
         }while(true);
         return new PersonnelShift(Shifts.valueOf (shift),arrayList);
     }
-    private static WorkPlace place(){
+    public static WorkPlace place(){
 	    String blok = GetChoiceFromUser.getStringFromUser ("Enter block: ");
 	    int floor = GetChoiceFromUser.getSubChoice (1,"Enter Floor(0,1): ");
 	    return new WorkPlace (new Block (blok),floor);

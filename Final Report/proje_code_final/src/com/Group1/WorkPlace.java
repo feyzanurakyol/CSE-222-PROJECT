@@ -7,12 +7,10 @@ public class WorkPlace {
         block = new Block ();
         floor = 0;
     }
-
     public WorkPlace (Block block, int floor) {
         this.block = block;
         this.floor = floor;
     }
-
     public Block getBlock () {
         return block;
     }

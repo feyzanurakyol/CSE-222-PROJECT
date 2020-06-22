@@ -1,5 +1,6 @@
 package com.Group1;
 
+import javax.naming.InterruptedNamingException;
 import java.util.*;
 import java.util.List;
 
@@ -16,13 +17,17 @@ public class DataBase {
     private PriorityQueue<ToDo> activeToDoQueue ;
     private List<ToDo> passiveToDo;//Todos that was done before
     private Queue<HealthAppointment> healthAppointmentsQueue ;
+    private Stack<DailyInmateCensus> dailyInmateCensusStack ;
     private AVLTree<Inmate> prisonersTree ;
     private SkipList<Personnel> allPersonnel ;
     private ListGraph prison_structure; //it will change a generic graph
-    private List<Jailer> jailerList ;
     private boolean fileFlag = false;
+    private boolean alert = false;
     private ReadAndWriteFile readAndWriteFile;
     private ArrayList<Integer> IDList ;
+    private Block A;
+    private Block B1;
+    private Block B2;
     public DataBase(){
         menuList = new LinkedList<> ();
         visitorsMap = new TreeMap<> ();
@@ -32,12 +37,18 @@ public class DataBase {
         prisonersTree = new AVLTree<> ();
         allPersonnel = new SkipList<> ();
         prison_structure = new ListGraph (5,true);
-        jailerList = new ArrayList<> ();
         readAndWriteFile = new ReadAndWriteFile (this);
         IDList = new ArrayList<> ();
+        A = new Block ("A");
+        B1= new Block ("B1");
+        B2 = new Block ("B2");
+        dailyInmateCensusStack = new Stack<> ();
     }
     public void openFlag(){fileFlag=true;}
     public void closeFlag(){fileFlag=false;}
+    public void setAlert(){alert=true;}
+    public void undoAlert(){alert=false;}
+    public boolean getAlert(){return alert;}
     /**
      * controlling menu with day matching. if they matched warning
      * to user. Else add to linkedList.
@@ -194,16 +205,19 @@ public class DataBase {
         visitorsMap.put (prisoner,visitorSet);
 
     }
-    public Visitor deleteVisitor(Inmate prisoner,Visitor visitor){
-        Collection<NavigableSet<Visitor>> values = visitorsMap.values ();
-        for (Set<Visitor> visitorSet : values) {
-            if (visitorSet.contains (visitor)){
-                visitorSet.remove (visitor);
-                readAndWriteFile.deleteVisitor (visitor);
-                return visitor;
-            }
+    public void addOneVisitor(Inmate inmate, Visitor visitor){
+        NavigableSet<Visitor> visitors = visitorsMap.get (inmate);
+        visitors.add (visitor);
+        visitorsMap.put (inmate,visitors);
+    }
+    public boolean deleteVisitor(Inmate prisoner,Visitor visitor){
+        boolean removed = false;
+        NavigableSet<Visitor> values = visitorsMap.get (prisoner);
+        if (values.contains (visitor)){
+            removed = values.remove (visitor);
+            readAndWriteFile.deleteVisitor (visitor);
         }
-        return null;
+        return removed;
     }
     public Visitor getVisitorWithTC(String TC){
         Collection<NavigableSet<Visitor>> values = visitorsMap.values ();
@@ -212,6 +226,15 @@ public class DataBase {
                 if (visitor.tcNumber.equals (TC)){
                     return visitor;
                 }
+            }
+        }
+        return null;
+    }
+    public Visitor getVisitorWithTC(Inmate prisoner,String TC){
+        NavigableSet<Visitor> values = visitorsMap.get (prisoner);
+        for (Visitor visitor:values) {
+            if (visitor.tcNumber.equals (TC)){
+                return visitor;
             }
         }
         return null;
@@ -359,43 +382,6 @@ public class DataBase {
         }
         return null;
     }
-    public void addJailer(Jailer jailer){
-        jailerList.add (jailer);
-        allPersonnel.add (jailer);
-    }
-    public void removeJailer(Jailer jailer){
-        jailerList.remove (jailer);
-        allPersonnel.remove (jailer);
-    }
-    public void removeJailerByID(int id){
-        for (Jailer ja :jailerList) {
-            if (ja.id==id){
-                allPersonnel.remove (ja);
-                jailerList.remove (ja);
-            }
-
-        }
-    }
-    public Jailer getJailer(int index){
-        return jailerList.get (index);
-    }
-    public Jailer getJailerByID(int id){
-        for (Jailer ja :jailerList) {
-            if (ja.id==id)
-                return ja;
-        }
-        return null;
-    }
-    public void updateJailer(Jailer oldJailer, Jailer newJailer){
-        int i =0;
-        for (Jailer ja :jailerList) {
-            if (ja.id==oldJailer.id){
-                jailerList.set (i,newJailer);
-                updatePersonnel (oldJailer,newJailer);
-            }
-            i++;
-        }
-    }
     /***
      * Add given id in arraylist
      * @param id will be added.
@@ -416,6 +402,21 @@ public class DataBase {
             }
         }
         return false;
+    }
+    public void addWard(String block,int ward){
+        if (block.equals(A.blockName));
+    }
+    public void addInmateCensus(int numberOfInmate,String date){
+        dailyInmateCensusStack.push (new DailyInmateCensus (numberOfInmate,date));
+    }
+    public DailyInmateCensus getLastInmateCensus(){
+        if (!dailyInmateCensusStack.isEmpty ())
+            return dailyInmateCensusStack.peek ();
+        return null;
+    }
+    public void deleteLastCensus(){
+        if (!dailyInmateCensusStack.isEmpty ())
+            dailyInmateCensusStack.pop ();
     }
     //------------Printing-----------------------------------------------------------------
     public void printAllData(){
