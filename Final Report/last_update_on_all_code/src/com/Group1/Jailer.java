@@ -8,20 +8,23 @@ public class Jailer extends Personnel{
     private ArrayList<String> shiftHours;
     /**
      * Constructor
+     * @param name Name
+     * @param surname Surname
+     * @param id ID
      */
-    /*public Jailer(String name, String surname, int id, String department, ArrayList<String> shiftHour){
-        //super(name, surname,JobType.Jailer,new HealthStatus()); // ID will be given in personnel
+    public Jailer(String name, String surname,int id,HealthStatus healthStatus, String department, ArrayList<String> shiftHour){
+        super(name,surname,JobType.Jailer,healthStatus);
         this.dp = department;
         this.shiftHours = shiftHour;
-    }*/
+    }
 
     public Jailer(){
-        super(-1,"No info","No info",JobType.Jailer,new HealthStatus ());
+        super();
     }
-    // ID will be given in personnel
-   /* public Jailer(int id){
-        //super(null,null,JobType.Jailer,null);
-    }*/
+
+    public Jailer(int id){
+        super(null,null,JobType.Jailer,new HealthStatus());
+    }
 /*
     @Override
     public void personnelInterface() {
@@ -34,13 +37,13 @@ public class Jailer extends Personnel{
      */
     public boolean checkCensus(int numberOfPrisoners, DataBase dataBase)
     {
-        /*if(dataBase.prisoners.size() == numberOfPrisoners) return true;
+        /*if(dataBase.pris.size() == numberOfPrisoners) return true;
         else return false;*/
-        return false;
+        return true;
     }
-/*
+
     @Override
-       public void personnelInterface() {
+    public void personnelInterface(DataBase dataBase) {
         int k;
         for ( k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n"+"   ");
@@ -50,43 +53,60 @@ public class Jailer extends Personnel{
         System.out.println("What Do you want to do ?");
         for ( k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n"+"   ");
-        System.out.println("[1] Add a visitor");
+        System.out.println("[1] Get a prisoner");
         for ( k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n"+"   ");
-        System.out.println("[2] Remove a visitor");
+        System.out.println("[2] Get your shift our");
         for ( k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n"+"   ");
-        System.out.println("[3] Clear all visitors");
+        System.out.println("[3] Get your department");
         for ( k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n"+"   ");
-        System.out.println("[4] Get a prisoner");
-        for ( k = 0; k < 45; k++) System.out.print("-");
-        System.out.print("\n"+"   ");
-        System.out.println("[5] Get your shift our");
-        for ( k = 0; k < 45; k++) System.out.print("-");
-        System.out.print("\n"+"   ");
-        System.out.println("[6] Get your department");
-        for ( k = 0; k < 45; k++) System.out.print("-");
-        System.out.print("\n"+"   ");
-        System.out.println("[7] Check census");
+        System.out.println("[4] Check census");
         for ( k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n"+"   ");
         System.out.println("[0] Main Menu.");
         for ( k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n");
         System.out.print( "Answer: ");
+
+        Scanner scan = new Scanner(System.in);
+        int answer = scan.nextInt();
+
+        switch (answer){
+            case 1:
+                //get prison
+                break;
+
+            case 2:
+                System.out.println("Shift hours:" );
+                for (int i = 0; i < getShiftHours().size() ; i++) {
+                    System.out.println(getShiftHours().get(i));
+                }
+                break;
+
+            case 3:
+                System.out.println("Department:" + getDP());
+                break;
+
+            case 4:
+                //check census part
+            default:
+                break;
+
+        }
     }
+
 
     /**
      * Get the prisoner object for further managing
      * @param id ID of the prisoner
      * @return Prisoner object
      */
-    /*public Inmate getPrisoner(int id, DataBase dataBase)
+    public Inmate getPrisoner(int id, DataBase dataBase)
     {
-        return dataBase.prisoners.find(new Inmate(id));
-    }*/
-
+        //return dataBase.prisoners.find(new Inmate(id));
+    }
     /**
      * If the alert is deactivated, activate
      * If the alert is active, deactivate
