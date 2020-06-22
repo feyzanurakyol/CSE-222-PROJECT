@@ -1,0 +1,4 @@
+11100,akif,kartal,_G.30"?'31No%32l$<33]w!78mAP88OAS86s)r83,Governor,a+,good,1.50,87,0.80,daytime,Monday,Tuesday,Wednesday,Thursday,Friday
+12100,mehmet,kartal,)/n30M"Y31ovJ32Vt[33>gb78I^k88Bk]86Zba83,Administrator,a+,good,1.50,87,0.80,night,Monday,Tuesday,Wednesday,Thursday,Friday
+13100,ali,kartal,k<p30YKj31*Du32Zie33X_^78!j;88'Dc86r<m83,Cook,a+,good,1.50,87,0.80,night,Monday,Tuesday,Wednesday,Thursday,Friday
+14100,yasin,kartal,)YC30%P]31Wf&32_?M33rM@78>;(88PK"86C&X83,Doctor,a+,good,1.50,87,0.80,night,Monday,Tuesday,Wednesday,Thursday,Friday
