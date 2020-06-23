@@ -149,4 +149,6 @@ public class ManageAdministrator {
 				db.deleteToDoFromTop ();
 		}
 	}
+
+	private void f() {}
 }
