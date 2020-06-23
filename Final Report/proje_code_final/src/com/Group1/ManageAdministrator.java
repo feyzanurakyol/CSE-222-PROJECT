@@ -136,9 +136,9 @@ public class ManageAdministrator {
 		return new PersonnelShift(Shifts.valueOf (shift),arrayList);
 	}
 	private static WorkPlace place(){
-		String blok = GetChoiceFromUser.getStringFromUser ("Enter block: ");
+		String blok = GetChoiceFromUser.getStringFromUser ("Enter block(A/B1/B2): ");
 		int floor = GetChoiceFromUser.getSubChoice (1,"Enter Floor(0,1): ");
-		return new WorkPlace (new Block (blok),floor);
+		return new WorkPlace (blok,floor);
 	}
 	private void checkMyTodo(Personnel admin){
 		if (db.checkTodo (admin.id)){

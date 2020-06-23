@@ -230,7 +230,7 @@ public class ReadAndWriteFile {
     private void fillBlocks(){
         try {
             String line;
-            while ((line = todosR.readLine()) != null) {
+            while ((line = blocksR.readLine()) != null) {
                 String[] information = line.split(",");
                 ArrayList<Integer> wards = new ArrayList<> ();
                 String[] w = information[1].split (";");

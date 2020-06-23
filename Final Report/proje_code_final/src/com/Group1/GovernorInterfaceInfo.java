@@ -35,9 +35,9 @@ public class GovernorInterfaceInfo {
         return new PersonnelShift(Shifts.valueOf (shift),arrayList);
     }
     public static WorkPlace place(){
-	    String blok = GetChoiceFromUser.getStringFromUser ("Enter block: ");
+	    String blok = GetChoiceFromUser.getStringFromUser ("Enter block(A/B1/B2): ");
 	    int floor = GetChoiceFromUser.getSubChoice (1,"Enter Floor(0,1): ");
-	    return new WorkPlace (new Block (blok),floor);
+	    return new WorkPlace (blok,floor);
     }
     public static Personnel addChiefJailerInfo(DataBase dataBase) {
         int id = GetChoiceFromUser.getIDFromUser (dataBase);
