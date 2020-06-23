@@ -181,7 +181,8 @@ public class Jailer extends Personnel{
         for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
         System.out.println("Enter ID of the prison: ");
         int id = scan.nextInt();
-        System.out.println(dataBase.getPersonnel(id).toString());
+        System.out.println(dataBase.getInmate(id).toString());
+
     }
 
     public void getShiftOur(){
