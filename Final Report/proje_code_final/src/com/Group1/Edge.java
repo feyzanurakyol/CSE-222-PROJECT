@@ -1,110 +1,90 @@
 package com.Group1;
 
-/** An Edge represents a relationship between two
- *  vertices.
- *  @author Koffman and Wolfgang
-*/
-
-public class Edge {
-  /**** BEGIN EXERCISE ****/
-  // Data Fields
-  /** The source vertix */
-  private int source;
-
-  /** The destination vertix */
-  private int dest;
-
-  /** The weight */
-  private double weight;
-
-  // Constructor
-  /** Construct an Edge with a source of from
-      and a destination of to. Set the weight
-      to 1.0.
-      @param source - The source vertix
-      @param dest - The destination vertix
-   */
-  public Edge(int source, int dest) {
-    this.source = source;
-    this.dest = dest;
-    weight = 1.0;
-  }
-
-  /** Construct a weighted edge with a source
-      of from and a destination of to. Set the
-      weight to w.
-      @param source - The source vertix
-      @param dest - The destination vertix
-      @param w - The weight
-   */
-  public Edge(int source, int dest, double w) {
-    this.source = source;
-    this.dest = dest;
-    weight = w;
-  }
-
-  // Methods
-  /** Get the source
-      @return The value of source
-   */
-  public int getSource() {
-    return source;
-  }
-
-  /** Get the destination
-      @return The value of dest
-   */
-  public int getDest() {
-    return dest;
-  }
-
-  /** Get the weight
-      @return the value of weight
-   */
-  public double getWeight() {
-    return weight;
-  }
-
-  /** Return a String representation of the edge
-      @return A String representation of the edge
-   */
-  public String toString() {
-    StringBuffer sb = new StringBuffer("[(");
-    sb.append(Integer.toString(source));
-    sb.append(", ");
-    sb.append(Integer.toString(dest));
-    sb.append("): ");
-    sb.append(Double.toString(weight));
-    sb.append("]");
-    return sb.toString();
-  }
-
-  /** Return true if two edges are equal. Edges
-      are equal if the source and destination
-      are equal. Weight is not conidered.
-      @param obj The object to compare to
-      @return true if the edges have the same source
-      and destination
-   */
-  public boolean equals(Object obj) {
-    if (obj instanceof Edge) {
-      Edge edge = (Edge) obj;
-      return (source == edge.source
-              && dest == edge.dest);
+/**
+ * Edge Class for Extended GraphADT.
+ * @param <E> Type of Edge.
+ */
+@SuppressWarnings ("unchecked")
+public class Edge<E> {
+    /**
+     * The destination vertex for an edge.
+     */
+    private E dest;
+    /**
+     * The source vertex for an edge.
+     */
+    private E source;
+    /**
+     * Constructs an Edge from source to dest. Sets the weight to 1.0
+     * @param source source vertex for an edge
+     * @param dest destination vertex for an edge
+     */
+    public Edge(E source, E dest) {
+        this.source = source;
+        this.dest = dest;
     }
-    else {
-      return false;
+
+    /**
+     *Compares two edges for equality. Edges are equal if their source
+     * and destination vertices are the same. The weight is not considered
+     * @param o the reference object with which to compare.
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o){
+            return true;
+        }
+        if (o == null){
+            return false;
+        }
+        if (!(o instanceof Edge)){
+            return  false;
+        }
+        Edge<E> e = (Edge<E>) o;
+        return (source == e.source && dest == e.dest);
     }
-  }
 
-  /** Return a hash code for an edge.  The hash
-      code is the source shifted left 16 bits
-      exclusive or with the dest
-      @return a hash code for an edge
-   */
-  public int hashCode() {
-    return (source << 16) ^ dest;
-  }
+    /**
+     * Returns the destination vertex.
+     * @return the destination vertex.
+     */
+    public E getDest() {
+        return dest;
+    }
 
-  /**** END EXERCISE ****/
+    /**
+     * Returns the source vertex
+     * @return the source vertex
+     */
+    public E getSource() {
+        return source;
+    }
+
+    public void setDest (E dest) {
+        this.dest = dest;
+    }
+
+    public void setSource (E source) {
+        this.source = source;
+    }
+
+    /**
+     * Returns a string representation of the edge.
+     * @return a string representation of the edge.
+     */
+    @Override
+    public String toString () {
+        return source + ", " + dest;
+    }
+
+    /**
+     * Returns the hash code for an edge. The hash code depends
+     * on the source and destination.
+     * @return the hash code for an edge.
+     */
+    @Override
+    public int hashCode() {
+        return source.hashCode ()*31*31 + dest.hashCode ()*31;
+    }
+
 }

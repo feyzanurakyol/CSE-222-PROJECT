@@ -1,6 +1,5 @@
 package com.Group1;
 
-import javax.naming.InterruptedNamingException;
 import java.util.*;
 import java.util.List;
 
@@ -20,14 +19,10 @@ public class DataBase {
     private Stack<DailyInmateCensus> dailyInmateCensusStack ;
     private AVLTree<Inmate> prisonersTree ;
     private SkipList<Personnel> allPersonnel ;
-    private ListGraph prison_structure; //it will change a generic graph
     private boolean fileFlag = false;
     private boolean alert = false;
     private ReadAndWriteFile readAndWriteFile;
     private ArrayList<Integer> IDList ;
-    private Block A;
-    private Block B1;
-    private Block B2;
     public DataBase(){
         menuList = new LinkedList<> ();
         visitorsMap = new TreeMap<> ();
@@ -36,12 +31,8 @@ public class DataBase {
         healthAppointmentsQueue = new LinkedList<> ();
         prisonersTree = new AVLTree<> ();
         allPersonnel = new SkipList<> ();
-        prison_structure = new ListGraph (5,true);
         readAndWriteFile = new ReadAndWriteFile (this);
         IDList = new ArrayList<> ();
-        A = new Block ("A");
-        B1= new Block ("B1");
-        B2 = new Block ("B2");
         dailyInmateCensusStack = new Stack<> ();
     }
     public void openFlag(){fileFlag=true;}
@@ -402,9 +393,6 @@ public class DataBase {
             }
         }
         return false;
-    }
-    public void addWard(String block,int ward){
-        if (block.equals(A.blockName));
     }
     public void addInmateCensus(int numberOfInmate,String date){
         dailyInmateCensusStack.push (new DailyInmateCensus (numberOfInmate,date));
