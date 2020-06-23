@@ -94,49 +94,53 @@ public class ManageJailer {
 		System.out.print("\n"+"   ");
 	}
 
-	public void manage(Personnel jailer){
+	public void manage(Personnel jailer) {
 
-		int choose;
-		do {
-			showMenu(jailer);
-			choose = GetChoiceFromUser.getSubChoice(10, "Answer: ");
+		try {
+			int choose;
+			do {
+				showMenu(jailer);
+				choose = GetChoiceFromUser.getSubChoice(10, "Answer: ");
 
-			switch (choose) {
-				case 1:
-					getLastCensus();
-					break;
-				case 2:
-					addCensus();
-					break;
-				case 3:
-					removeLastCensus();
-					break;
-				case 4:
-					dataBase.setAlert();
-					break;
-				case 5:
-					dataBase.undoAlert();
-					break;
-				case 6:
-					getPrison();
-					break;
-				case 7:
-					getShiftOur();
-					break;
-				case 8:
-					getDepartment();
-					break;
-				case 9:
-					addHealthAppointment();
-					break;
-				case 10:
-					deleteHealthAppointment();
-					break;
-				default:
-					break;
+				switch (choose) {
+					case 1:
+						getLastCensus();
+						break;
+					case 2:
+						addCensus();
+						break;
+					case 3:
+						removeLastCensus();
+						break;
+					case 4:
+						dataBase.setAlert();
+						break;
+					case 5:
+						dataBase.undoAlert();
+						break;
+					case 6:
+						getPrison();
+						break;
+					case 7:
+						getShiftOur();
+						break;
+					case 8:
+						getDepartment();
+						break;
+					case 9:
+						addHealthAppointment();
+						break;
+					case 10:
+						deleteHealthAppointment();
+						break;
+					default:
+						break;
 
-			}
-		}while (choose != 0);
+				}
+			} while (choose != 0);
+		}catch (Exception a){
+			System.out.println(a.toString());
+		}
 	}
 
 
