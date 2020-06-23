@@ -188,6 +188,7 @@ public class ManageJailer {
 
 		System.out.println("Shift hours:" );
 		for ( k = 0; k < 45; k++) System.out.print("-");
+		System.out.println("\n");
 
 		for (int i = 0; i < dataBase.getPersonnel(id).getShift().workdays.size(); i++) {
 			System.out.println(dataBase.getPersonnel(id).getShift().workdays.get(i));
