@@ -517,8 +517,8 @@ public class DataBase {
         System.out.println ();
     }
     public void printPrison(){
-        Block[] blocks = blockStructureGraph.dfs ();
-        for (Block block : blocks) {
+        Object[] blocks = blockStructureGraph.dfs ();
+        for (Object block : blocks) {
             System.out.println (block);
         }
     }
