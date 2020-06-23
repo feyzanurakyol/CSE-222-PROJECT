@@ -205,6 +205,7 @@ public class ManageJailer {
 
 		System.out.println("Department:" );
 		for ( k = 0; k < 45; k++) System.out.print("-");
+		System.out.println("\n");
 		System.out.println(dataBase.getPersonnel(id).getPlace().toString());
 	}
 
