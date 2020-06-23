@@ -67,60 +67,64 @@ public class ManageChiefJailer extends ManageJailer {
 
     public void manage(Personnel chiefJailer) {
 
-        int choose;
-        do {
-            showMenu(chiefJailer);
-            choose = GetChoiceFromUser.getSubChoice(15, "Answer: ");
+        try{
+            int choose;
+            do {
+                showMenu(chiefJailer);
+                choose = GetChoiceFromUser.getSubChoice(15, "Answer: ");
 
-            switch (choose) {
-                case 1:
-                    getLastCensus();
-                    break;
-                case 2:
-                    addCensus();
-                    break;
-                case 3:
-                    removeLastCensus();
-                    break;
-                case 4:
-                    dataBase.setAlert();
-                    break;
-                case 5:
-                    dataBase.undoAlert();
-                    break;
-                case 6:
-                    addVisitor();
-                    break;
+                switch (choose) {
+                    case 1:
+                        getLastCensus();
+                        break;
+                    case 2:
+                        addCensus();
+                        break;
+                    case 3:
+                        removeLastCensus();
+                        break;
+                    case 4:
+                        dataBase.setAlert();
+                        break;
+                    case 5:
+                        dataBase.undoAlert();
+                        break;
+                    case 6:
+                        addVisitor();
+                        break;
 
-                case 7:
-                    removeVisitor();
-                    break;
-                case 8:
-                    dataBase.printAllVisitor();
-                    break;
+                    case 7:
+                        removeVisitor();
+                        break;
+                    case 8:
+                        dataBase.printAllVisitor();
+                        break;
 
-                case 9:
-                    getPrison();
-                    break;
+                    case 9:
+                        getPrison();
+                        break;
 
-                case 10:
-                    getShiftOur();
-                    break;
+                    case 10:
+                        getShiftOur();
+                        break;
 
-                case 11:
-                    getDepartment();
-                    break;
-                case 12:
-                    setJailerSH();
-                    break;
-                case 13:
-                    setJailerDP();
-                    break;
-                default:
-                    break;
+                    case 11:
+                        getDepartment();
+                        break;
+                    case 12:
+                        setJailerSH();
+                        break;
+                    case 13:
+                        setJailerDP();
+                        break;
+                    default:
+                        break;
 
-            }
-        }while (choose != 0);
+                }
+            } while (choose != 0);
+        } catch (Exception a){
+            System.out.println(a.toString());
+        }
     }
 
     public void setJailerSH(){
