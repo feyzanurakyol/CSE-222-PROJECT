@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b0dfddbd-c612-4e4d-889e-78e50cbaaefc" name="Default Changelist" comment="" />
+    <list default="true" id="b0dfddbd-c612-4e4d-889e-78e50cbaaefc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Project_Final_Report.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../Project_Final_Report.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks.txt" beforeDir="false" afterPath="$PROJECT_DIR$/blocks.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/Group1/ManageChiefJailer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Group1/ManageChiefJailer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/Group1/ManageJailer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Group1/ManageJailer.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +21,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
   <component name="ProjectId" id="1alEajJvHkmQlzYXU8njC1CAkAj" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -21,6 +31,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../hwks/boolean" />
   </component>
   <component name="RunManager">
@@ -66,14 +77,18 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="488" y="84" key="#com.intellij.ide.util.MemberChooser" timestamp="1592810409207">
+    <state x="488" y="84" key="#com.intellij.ide.util.MemberChooser" timestamp="1592945781906">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="488" y="84" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1592810409207" />
+    <state x="488" y="84" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1592945781906" />
     <state x="479" y="253" width="408" height="240" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1592407607105">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="479" y="253" width="408" height="240" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.738@0.0.1366.738" timestamp="1592407607105" />
+    <state x="413" y="115" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1592947757297">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="413" y="115" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.738@0.0.1366.738" timestamp="1592947757297" />
     <state x="463" y="123" key="FileChooserDialogImpl" timestamp="1592419696645">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -122,20 +137,9 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="339" y="165" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1592831995382" />
-    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1592748249482">
+    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1592948523354">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1592748249482" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/Group1/DataBase.java</url>
-          <line>354</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1592948523354" />
   </component>
 </project>

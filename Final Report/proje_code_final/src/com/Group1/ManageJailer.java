@@ -2,6 +2,7 @@ package com.Group1;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 /**
@@ -92,6 +93,12 @@ public class ManageJailer extends Personnel{
 		System.out.println("[8] Get your department");
 		for ( k = 0; k < 45; k++) System.out.print("-");
 		System.out.print("\n"+"   ");
+		System.out.println("[9] Add Health Appointment");
+		for ( k = 0; k < 45; k++) System.out.print("-");
+		System.out.print("\n"+"   ");
+		System.out.println("[10] Delete Health Appointment");
+		for ( k = 0; k < 45; k++) System.out.print("-");
+		System.out.print("\n"+"   ");
 	}
 
 	public void manage(Personnel jailer){
@@ -99,7 +106,7 @@ public class ManageJailer extends Personnel{
 		int choose;
 		do {
 			showMenu(jailer);
-			choose = GetChoiceFromUser.getSubChoice(8, "Answer: ");
+			choose = GetChoiceFromUser.getSubChoice(10, "Answer: ");
 
 			switch (choose) {
 				case 1:
@@ -126,12 +133,46 @@ public class ManageJailer extends Personnel{
 				case 8:
 					System.out.println("Department:" + this.place.toString());
 					break;
-
+				case 9:
+					addHealthAppointment();
+					break;
+				case 10:
+					deleteHealthAppointment();
+					break;
 				default:
 					break;
 
 			}
 		}while (choose != 0);
+	}
+
+
+	public void addHealthAppointment(){
+		int k;
+		Scanner scan = new Scanner (System.in);
+		System.out.println("Enter inmate id: ");
+		int inmateNumber = scan.nextInt();
+		Inmate inmate = dataBase.getInmate (inmateNumber);
+		if (inmate != null){
+			for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
+			System.out.println("Appointment Id: ");
+			int apId = scan.nextInt();
+			for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
+			System.out.println("Enter explanation: ");
+			String exp = scan.nextLine();
+			for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
+			dataBase.addHealthAppointmentToTheTop (new HealthAppointment(apId,DateFormat.getInstance().format(new Date()),inmate.getId(),exp,inmate.getHealthStatus()));
+			dataBase.printAllHealthAppointments();
+		}
+		else{
+			System.out.println ("Inmate was not found!");
+			throw new NoSuchElementException("No Inmate found in given ID!");
+		}
+	}
+
+	public void deleteHealthAppointment(){
+		dataBase.deleteHealthAppointmentFromTop();
+		dataBase.printAllHealthAppointments();
 	}
 
 

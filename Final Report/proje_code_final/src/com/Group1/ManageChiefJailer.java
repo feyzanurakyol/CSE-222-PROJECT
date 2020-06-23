@@ -1,5 +1,6 @@
 package com.Group1;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 import java.util.Queue;
 import java.util.Scanner;
 
@@ -143,6 +144,9 @@ public class ManageChiefJailer extends Jailer {
         System.out.println("Enter the ID of the jailer:");
         int jailerID = scan.nextInt();
 
+        if(dataBase.getPersonnel(jailerID) == null)
+            throw new NoSuchElementException("There is no Jailer with given id!");
+
         do {
             System.out.println("Enter the new working days:");
             shiftTimes = scan.nextLine();
@@ -218,13 +222,19 @@ public class ManageChiefJailer extends Jailer {
         int k;
         for (k = 0; k < 45; k++) System.out.print("-");
         System.out.println();
-        System.out.println("Enter new workplace's block(A/B1/B2): ");
-        String blockName = scan.nextLine();
-        System.out.println("Enter new workplace's floor(0/1): ");
-        int floor = scan.nextInt();
         System.out.println("Enter the Jailer's id: ");
         int jailerId = scan.nextInt();
-        dataBase.getPersonnel(jailerId).setPlace(new WorkPlace(blockName, floor));
+
+        if (dataBase.getPersonnel(jailerId) == null)
+            throw new NoSuchElementException("No Jailer found in given ID!");
+
+        System.out.println("Enter new workplace's block: ");
+        String blockName = scan.nextLine();
+        Block block = new Block(blockName);
+
+        System.out.println("Enter new workplace's floor: ");
+        int floor = scan.nextInt();
+        dataBase.getPersonnel(jailerId).setPlace(new WorkPlace(block, floor));
     }
 
     public void setYourSH(){
@@ -307,12 +317,14 @@ public class ManageChiefJailer extends Jailer {
         int k;
         for (k = 0; k < 45; k++) System.out.print("-");
         System.out.println();
-        System.out.println("Enter your new workplace's block(A/B1/B2): ");
+        System.out.println("Enter your new workplace's block: ");
         String blockName = scan.nextLine();
-        System.out.println("Enter your new workplace's floor(0/1): ");
+        Block block = new Block(blockName);
+
+        System.out.println("Enter your new workplace's floor: ");
         int floor = scan.nextInt();
 
-        this.setPlace(new WorkPlace(blockName, floor));
+        this.setPlace(new WorkPlace(block, floor));
     }
 
     public void addVisitor(){
@@ -345,6 +357,7 @@ public class ManageChiefJailer extends Jailer {
         }
         else{
             System.out.println ("Inmate was not found!");
+            throw new NoSuchElementException("No Inmate found in given ID!");
         }
 
         dataBase.printAllVisitor();
@@ -356,11 +369,15 @@ public class ManageChiefJailer extends Jailer {
         for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
         System.out.println("Enter Visitor's TC number: ");
         String tc = scan.nextLine();
+        if (dataBase.getVisitorWithTC(tc) == null)
+            throw new NoSuchElementException("No Visitor found in given TC!");
         removeVisitor(tc,dataBase);
     }
 
     protected void removeVisitor(String tc,DataBase dataBase)
     {
+        if (dataBase.getVisitorWithTC(tc) == null)
+            throw new NoSuchElementException("No Visitor found in given TC!");
         dataBase.deleteVisitor(new Inmate(dataBase.getVisitorWithTC(tc).inmateNumber) ,dataBase.getVisitorWithTC(tc));
     }
 
