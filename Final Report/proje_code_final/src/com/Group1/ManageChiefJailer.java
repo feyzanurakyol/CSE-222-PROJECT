@@ -4,7 +4,7 @@ import java.util.NoSuchElementException;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class ManageChiefJailer extends Jailer {
+public class ManageChiefJailer extends ManageJailer {
 
     public ManageChiefJailer(DataBase dataBase) {
         super(dataBase);
@@ -15,7 +15,7 @@ public class ManageChiefJailer extends Jailer {
         int k;
         for (k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n" + "   ");
-        System.out.println("Welcome Chief Jailer " + name);
+        System.out.println("Welcome Chief Jailer " +chiefJailer.name +" " + chiefJailer.surname);
         for (k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n" + "   ");
         System.out.println("What Do you want to do ?");
@@ -51,22 +51,15 @@ public class ManageChiefJailer extends Jailer {
         System.out.println("[9] Get a prisoner");
         for (k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n" + "   ");
-        System.out.println("[10] Get your shift our");
+        System.out.println("[10] Get shift our");
         for (k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n" + "   ");
-        System.out.println("[11] Get your department");
+        System.out.println("[11] Get department");
+        for (k = 0; k < 45; k++) System.out.print("-");
+        System.out.println("[12] Set shift our.");
         for (k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n" + "   ");
-        System.out.println("[12] Set jailer's shift our.");
-        for (k = 0; k < 45; k++) System.out.print("-");
-        System.out.print("\n" + "   ");
-        System.out.println("[13] Manage jailer's department (workplace).");
-        for (k = 0; k < 45; k++) System.out.print("-");
-        System.out.print("\n" + "   ");
-        System.out.println("[14] Set your your shift our.");
-        for (k = 0; k < 45; k++) System.out.print("-");
-        System.out.print("\n" + "   ");
-        System.out.println("[15] Set your your department");
+        System.out.println("[13] Set department");
         for (k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n");
 
@@ -115,19 +108,13 @@ public class ManageChiefJailer extends Jailer {
                     break;
 
                 case 11:
-                    System.out.println("Department:" + this.place.toString());
+                    getDepartment();
                     break;
                 case 12:
                     setJailerSH();
                     break;
                 case 13:
                     setJailerDP();
-                    break;
-                case 14:
-                    setYourSH();
-                    break;
-                case 15:
-                    setYourDP();
                     break;
                 default:
                     break;
@@ -236,92 +223,6 @@ public class ManageChiefJailer extends Jailer {
         dataBase.getPersonnel(jailerId).setPlace(new WorkPlace(blockName, floor));
     }
 
-    public void setYourSH(){
-        Scanner scan = new Scanner(System.in);
-        int k;
-        String shiftTimes = "";
-        ArrayList<Days> newShiftdays = new ArrayList<>();
-        do {
-            System.out.println("Enter the new working days:");
-            shiftTimes = scan.nextLine();
-
-            switch (shiftTimes) {
-                case "Monday":
-                    newShiftdays.add(Days.Monday);
-                    break;
-                case "Tuesday":
-                    newShiftdays.add(Days.Tuesday);
-                    break;
-                case "Wednesday":
-                    newShiftdays.add(Days.Wednesday);
-                    break;
-                case "Thursday":
-                    newShiftdays.add(Days.Thursday);
-                    break;
-                case "Friday":
-                    newShiftdays.add(Days.Friday);
-                    break;
-                case "Saturday":
-                    newShiftdays.add(Days.Saturday);
-                    break;
-                case "Sunday":
-                    newShiftdays.add(Days.Sunday);
-                    break;
-                default:
-                    System.out.println("Not a valid day! Enter again!");
-            }
-
-        } while (!(shiftTimes.equals("-")));
-
-        for (k = 0; k < 45; k++) System.out.print("-");
-        System.out.print("\n" + "   ");
-        System.out.println("Choose a shift time:");
-        for (k = 0; k < 45; k++) System.out.print("-");
-        System.out.print("\n" + "   ");
-        System.out.println("[1] Daytime - 08.00 - 16.00");
-        for (k = 0; k < 45; k++) System.out.print("-");
-        System.out.print("\n" + "   ");
-        System.out.println("[2] Evening - 16.00 - 00.00");
-        for (k = 0; k < 45; k++) System.out.print("-");
-        System.out.print("\n" + "   ");
-        System.out.println("[3] Night - 00.00 - 08.00");
-        for (k = 0; k < 45; k++) System.out.print("-");
-        System.out.print("\n" + "   ");
-        Shifts shift = Shifts.daytime;
-        int choose = 0;
-        do {
-            choose = scan.nextInt();
-
-            switch (choose) {
-                case 1:
-                    shift = Shifts.daytime;
-                    break;
-                case 2:
-                    shift = Shifts.evening;
-                    break;
-                case 3:
-                    shift = Shifts.night;
-                    break;
-                default:
-                    System.out.println("Not a valid day! Enter again");
-                    break;
-            }
-        } while (!(choose == 1 || choose == 2 || choose == 3));
-
-        this.setShift(new PersonnelShift(shift, newShiftdays));
-    }
-
-    public void setYourDP(){
-        Scanner scan = new Scanner(System.in);
-        int k;
-        for (k = 0; k < 45; k++) System.out.print("-");
-        System.out.println();
-        System.out.println("Enter your new workplace's block(A/B1/B2): ");
-        String blockName = scan.nextLine();
-        System.out.println("Enter your new workplace's floor(0/1): ");
-        int floor = scan.nextInt();
-        this.setPlace(new WorkPlace(blockName, floor));
-    }
 
     public void addVisitor(){
         int k;
