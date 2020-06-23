@@ -3,7 +3,6 @@ package com.Group1;
 import java.util.ArrayList;
 
 public class HealthStatus {
-    private ArrayList<HealthAppointment> healthAppointments;
     private String bloodGroup;
     private String lastControlResult;
     private double height;
@@ -18,7 +17,6 @@ public class HealthStatus {
         this.height = height;
         this.weight = weight;
         this.pulse = pulse;
-        healthAppointments = new ArrayList<> ();
     }
 
     public String getBloodGroup () {
@@ -60,14 +58,7 @@ public class HealthStatus {
     public void setPulse (double pulse) {
         this.pulse = pulse;
     }
-
-    public ArrayList<HealthAppointment> getHealthAppointments () {
-        return healthAppointments;
-    }
-
-    public void setHealthAppointments (ArrayList<HealthAppointment> healthAppointments) {
-        this.healthAppointments = healthAppointments;
-    }
+    
     @Override
     public String toString() {
         return "Health Information\n" +
