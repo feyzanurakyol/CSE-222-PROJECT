@@ -1,21 +1,21 @@
 package com.Group1;
 
 public class WorkPlace {
-    protected Block block;
+    protected String block;
     protected int floor;
     public WorkPlace () {
-        block = new Block ();
+        block = "A";
         floor = 0;
     }
-    public WorkPlace (Block block, int floor) {
+    public WorkPlace (String block, int floor) {
         this.block = block;
         this.floor = floor;
     }
-    public Block getBlock () {
+    public String getBlock () {
         return block;
     }
 
-    public void setBlock (Block block) {
+    public void setBlock (String block) {
         this.block = block;
     }
 
