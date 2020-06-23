@@ -8,20 +8,13 @@ import java.util.Scanner;
 /**
  * Jailer Class
  */
-public class ManageJailer extends Personnel{
+public class ManageJailer {
 	/**
 	 * This field will be used when we make operations.
 	 * */
 	protected DataBase dataBase; //we will use it when we make operations
 
-	public ManageJailer(int id){
-		super(id);
-	}
-
-	public ManageJailer(DataBase data) {
-		super(-1);
-		dataBase = data;
-	}
+	public ManageJailer(DataBase data) { this.dataBase = data; }
 
 	/**
 	 *Get inmate information by id, id take from user
@@ -87,10 +80,10 @@ public class ManageJailer extends Personnel{
 		System.out.println("[6] Get a prisoner");
 		for ( k = 0; k < 45; k++) System.out.print("-");
 		System.out.print("\n"+"   ");
-		System.out.println("[7] Get your shift our");
+		System.out.println("[7] Get shift our");
 		for ( k = 0; k < 45; k++) System.out.print("-");
 		System.out.print("\n"+"   ");
-		System.out.println("[8] Get your department");
+		System.out.println("[8] Get department");
 		for ( k = 0; k < 45; k++) System.out.print("-");
 		System.out.print("\n"+"   ");
 		System.out.println("[9] Add Health Appointment");
@@ -131,7 +124,7 @@ public class ManageJailer extends Personnel{
 					getShiftOur();
 					break;
 				case 8:
-					System.out.println("Department:" + this.place.toString());
+					getDepartment();
 					break;
 				case 9:
 					addHealthAppointment();
@@ -188,12 +181,30 @@ public class ManageJailer extends Personnel{
 	public void getShiftOur(){
 		int k;
 		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter id:");
+		int id = scan.nextInt();
+		if (dataBase.getPersonnel(id)==null)
+			throw new NoSuchElementException("No matching jailer found!");
+
 		System.out.println("Shift hours:" );
 		for ( k = 0; k < 45; k++) System.out.print("-");
 
-		for (int i = 0; i < this.shift.workdays.size(); i++) {
-			System.out.println(this.shift.workdays.get(i));
+		for (int i = 0; i < dataBase.getPersonnel(id).getShift().workdays.size(); i++) {
+			System.out.println(dataBase.getPersonnel(id).getShift().workdays.get(i));
 		}
+	}
+
+	public void getDepartment(){
+		int k;
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter id:");
+		int id = scan.nextInt();
+		if (dataBase.getPersonnel(id)==null)
+			throw new NoSuchElementException("No matching jailer found!");
+
+		System.out.println("Department:" );
+		for ( k = 0; k < 45; k++) System.out.print("-");
+		System.out.println(dataBase.getPersonnel(id).getPlace().toString());
 	}
 
 
