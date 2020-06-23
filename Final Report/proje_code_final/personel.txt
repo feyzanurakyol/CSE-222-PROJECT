@@ -2,4 +2,5 @@
 12100,mehmet,kartal,)/n30M"Y31ovJ32Vt[33>gb78I^k88Bk]86Zba83,Administrator,a+,good,1.50,87,0.80,night,Monday,Tuesday,Wednesday,Thursday,Friday
 13100,ali,kartal,k<p30YKj31*Du32Zie33X_^78!j;88'Dc86r<m83,Cook,a+,good,1.50,87,0.80,night,Monday,Tuesday,Wednesday,Thursday,Friday
 14100,yasin,kartal,)YC30%P]31Wf&32_?M33rM@78>;(88PK"86C&X83,Doctor,a+,good,1.50,87,0.80,night,Monday,Tuesday,Wednesday,Thursday,Friday
-99999,ali,veli,u}q26q|[52KuY75g/?31owX35,Jailer,0,okay,180.0,80.0,90.0,night,Tuesday
+99999,ali,veli,ou=30WOB31-X/32r>_33>-A78MU'88v{R86Bwt83,Jailer,0,okay,180.0,80.0,90.0,night,Tuesday
+99998,hasan,ahmet,ou=30WOB31-X/32r>_33>-A78MU'88v{R86Bwt83,ChiefJailer,0,good,182.0,80.0,90.0,evening,Monday,Sunday,Saturday
