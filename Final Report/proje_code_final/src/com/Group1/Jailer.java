@@ -1,32 +1,49 @@
 package com.Group1;
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Scanner;
+
 /**
  * Jailer Class
  */
 public class Jailer extends Personnel{
-    private String dp;
-    private ArrayList<String> shiftHours;
     /**
-     * Constructor
-     */
-    /*public Jailer(String name, String surname, int id, String department, ArrayList<String> shiftHour){
-        //super(name, surname,JobType.Jailer,new HealthStatus()); // ID will be given in personnel
-        this.dp = department;
-        this.shiftHours = shiftHour;
-    }*/
+     * This field will be used when we make operations.
+     * */
+    protected DataBase dataBase; //we will use it when we make operations
+
 
     public Jailer(){
         super(-1,"No info","No info","No info",JobType.Jailer);
     }
-    // ID will be given in personnel
-   /* public Jailer(int id){
-        //super(null,null,JobType.Jailer,null);
-    }*/
-/*
-    @Override
-    public void personnelInterface() {
+
+    public Jailer(DataBase data) {
+        super(-1);
+        dataBase = data;
     }
-*/
+
+    /**
+     *Get inmate information by id, id take from user
+     *If id is not avaliable,return null
+     *@return Inmate
+     */
+    public void getLastCensus(){
+        if (dataBase.getLastInmateCensus ()!=null)
+            System.out.println (dataBase.getLastInmateCensus ());
+        else
+            System.out.println ("No Last Census");
+
+    }
+    public void addCensus(){
+        int number = GetChoiceFromUser.getNumber ("Enter number of Inmate: ");
+        dataBase.addInmateCensus (number, DateFormat.getInstance().format(new Date()));
+        System.out.println ("Census info was Added with today's date.");
+    }
+
+    public void removeLastCensus(){
+        dataBase.deleteLastCensus ();
+    }
     /**
      * Checks if the count of the prisoners checks with the system census information
      * @param numberOfPrisoners counted prisoner number
@@ -38,9 +55,8 @@ public class Jailer extends Personnel{
         else return false;*/
         return false;
     }
-/*
-    @Override
-       public void personnelInterface() {
+
+       public void showMenu(Personnel jailer) {
         int k;
         for ( k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n"+"   ");
@@ -71,21 +87,114 @@ public class Jailer extends Personnel{
         System.out.println("[7] Check census");
         for ( k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n"+"   ");
-        System.out.println("[0] Main Menu.");
+        System.out.println("[8] Main Menu.");
         for ( k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n");
-        System.out.print( "Answer: ");
     }
 
-    /**
-     * Get the prisoner object for further managing
-     * @param id ID of the prisoner
-     * @return Prisoner object
-     */
-    /*public Inmate getPrisoner(int id, DataBase dataBase)
-    {
-        return dataBase.prisoners.find(new Inmate(id));
-    }*/
+    public void manage(Personnel jailer){
+
+        int choose;
+        do {
+            showMenu(jailer);
+            choose = GetChoiceFromUser.getSubChoice(10, "Answer: ");
+
+            switch (choose) {
+                case 1:
+                    addVisitor();
+                    break;
+                case 2:
+                    removeVisitor();
+                    break;
+
+                case 3:
+                    clearVisitors();
+                    break;
+
+                case 4:
+                    getPrison();
+                    break;
+
+                case 5:
+                    getShiftOur();
+                    break;
+
+                case 6:
+                    System.out.println("Department:" + this.place.toString());
+                    break;
+
+                case 7:
+                    getLastCensus(); //im not sure
+
+                case 8:
+                    dataBase.printLastMenu();
+                    break;
+
+                default:
+                    break;
+
+            }
+        }while (choose != 0);
+    }
+
+    public void addVisitor(){
+        int k;
+        Scanner scan = new Scanner(System.in);
+        for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
+        System.out.println("Enter name: ");
+        String name = scan.nextLine();
+        for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
+        System.out.println("Enter surname: ");
+        String surname = scan.nextLine();
+        for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
+        System.out.println("Enter TC number: ");
+        String tc = scan.nextLine();
+        for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
+        System.out.println("Enter inmate id: ");
+        int inmateNumber = scan.nextInt();
+        for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
+        System.out.println("Enter telephone number of visitor: ");
+        String telephone = scan.nextLine();
+        for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
+        System.out.println("Enter date: ");
+        String date = scan.nextLine();
+        for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
+        System.out.println("Enter enterance time: ");
+        String time = scan.nextLine();
+        for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
+
+        addVisitor(new Visitor(name,surname,tc,inmateNumber,telephone,date,time),new Inmate(id),dataBase);
+    }
+
+    public void removeVisitor(){
+        int k;
+        Scanner scan = new Scanner(System.in);
+        for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
+        System.out.println("Enter Visitor's TC number: ");
+        String tc = scan.nextLine();
+        removeVisitor(tc,dataBase);
+    }
+
+    public void getPrison(){
+        int k;
+        Scanner scan = new Scanner(System.in);
+        for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
+        System.out.println("Enter ID of the prison: ");
+        int id = scan.nextInt();
+        System.out.println(dataBase.getPersonnel(id).toString());
+    }
+
+    public void getShiftOur(){
+        int k;
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Shift hours:" );
+        for ( k = 0; k < 45; k++) System.out.print("-");
+
+        for (int i = 0; i < this.shift.workdays.size(); i++) {
+            System.out.println(this.shift.workdays.get(i));
+        }
+    }
+
 
     /**
      * If the alert is deactivated, activate
@@ -97,8 +206,21 @@ public class Jailer extends Personnel{
         else db.setAlertState(true);
     }*/
 
-    protected String getDP(){ return dp; }
-    protected ArrayList<String> getShiftHours(){ return shiftHours; }
-    protected void setDp(String newDP){ dp = newDP;}
-    protected void setShiftHours(ArrayList<String> newShiftHours){ shiftHours = newShiftHours; }
+
+    protected void addVisitor(Visitor newVisitor,Inmate inmate, DataBase dataBase)
+    {
+        dataBase.addVisitor(inmate,dataBase.getVisitorSet(inmate));
+    }
+
+    protected void removeVisitor(String tc,DataBase dataBase)
+    {
+        dataBase.deleteVisitor(new Inmate(dataBase.getVisitorWithTC(tc).inmateNumber) ,dataBase.getVisitorWithTC(tc));
+    }
+
+    protected void clearVisitors()
+    {
+        dataBase.setVisitorSet(null,null,null);
+    }
 }
+
+
