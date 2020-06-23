@@ -228,7 +228,24 @@ public class ReadAndWriteFile {
         }
     }
     private void fillBlocks(){
-        //Block class should be created...
+        try {
+            String line;
+            while ((line = todosR.readLine()) != null) {
+                String[] information = line.split(",");
+                ArrayList<Integer> wards = new ArrayList<> ();
+                String[] w = information[1].split (";");
+                for (String wr:w) {
+                    wards.add (Integer.parseInt (wr));
+                }
+                ArrayList<String> rooms = new ArrayList<> ();
+                String[] r = information[2].split (";");
+                Collections.addAll (rooms, r);
+                dataBase.createGraph (information[0],wards,rooms);
+            }
+
+        }catch (IOException e){
+            e.printStackTrace ();
+        }
     }
     private void fillTodos(){
         try {

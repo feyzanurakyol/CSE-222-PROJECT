@@ -54,17 +54,30 @@ public class Block {
         if (this == o) return true;
         if (o == null || getClass () != o.getClass ()) return false;
         Block block = (Block) o;
-        return blockName.equals (block.blockName) &&
-                wards.equals (block.wards) &&
-                otherRooms.equals (block.otherRooms);
+        return blockName.equals (block.blockName);
     }
 
     @Override
     public String toString () {
-        return "Block{" +
-                "blockName='" + blockName + '\'' +
-                ", wards=" + wards +
-                ", otherRooms=" + otherRooms +
-                '}';
+        int k;
+        StringBuilder stringBuilder = new StringBuilder ();
+        for ( k = 0; k < 45; k++) stringBuilder.append ("-");
+        stringBuilder.append ("\n");
+        stringBuilder.append ("Block Name: "+blockName+"\n");
+        stringBuilder.append ("Wards in this Block: ");
+        for (Integer ward: wards) {
+            stringBuilder.append (ward+",");
+        }
+        stringBuilder.deleteCharAt (stringBuilder.length ()-1);
+        stringBuilder.append ("\n");
+        stringBuilder.append ("Other Rooms in this Block: ");
+        for (String room: otherRooms) {
+            stringBuilder.append (room+",");
+        }
+        stringBuilder.deleteCharAt (stringBuilder.length ()-1);
+        stringBuilder.append ("\n");
+        for ( k = 0; k < 45; k++) stringBuilder.append ("-");
+        stringBuilder.append ("\n");
+        return stringBuilder.toString ();
     }
 }

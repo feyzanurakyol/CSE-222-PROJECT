@@ -473,6 +473,21 @@ public class AdjacencyListMatrix<E> extends AbstractGraphADT<E> {
             throw new IllegalArgumentException ();
 
     }
+
+    @Override
+    public void setVertex (E oldVertex, E newVertex) {
+        HeadNode<E> rowTemp = rowHead;
+        HeadNode<E> columnTemp = columnHead;
+        while (rowTemp.headNext!=null&&columnTemp.headNext!=null){
+            if (columnTemp.headNext.vertex.equals (oldVertex)){
+                columnTemp.headNext.vertex = newVertex;
+                rowTemp.headNext.vertex = newVertex;
+            }
+            columnTemp=columnTemp.headNext;
+            rowTemp = rowTemp.headNext;
+        }
+    }
+
     /**
      * Performs Breadth-first search of the graph by starting given vertex.
      * @param startVertex start vertex of search

@@ -19,6 +19,7 @@ public class DataBase {
     private Stack<DailyInmateCensus> dailyInmateCensusStack ;
     private AVLTree<Inmate> prisonersTree ;
     private SkipList<Personnel> allPersonnel ;
+    private GraphADT<Block> blockStructureGraph;
     private boolean fileFlag = false;
     private boolean alert = false;
     private ReadAndWriteFile readAndWriteFile;
@@ -34,6 +35,8 @@ public class DataBase {
         readAndWriteFile = new ReadAndWriteFile (this);
         IDList = new ArrayList<> ();
         dailyInmateCensusStack = new Stack<> ();
+        Block[] blocks = new Block[]{new Block ("A"),new Block ("B1"),new Block ("B2")};
+        blockStructureGraph = new AdjacencyListMatrix<> (3,false,blocks);
     }
     public void openFlag(){fileFlag=true;}
     public void closeFlag(){fileFlag=false;}
@@ -406,6 +409,9 @@ public class DataBase {
         if (!dailyInmateCensusStack.isEmpty ())
             dailyInmateCensusStack.pop ();
     }
+    public void createGraph(String blockName,ArrayList<Integer> wards, ArrayList<String> otherRooms){
+        blockStructureGraph.setVertex (new Block (blockName),new Block (blockName,wards,otherRooms));
+    }
     //------------Printing-----------------------------------------------------------------
     public void printAllData(){
         System.out.println ("***All Data is in the system***");
@@ -511,7 +517,10 @@ public class DataBase {
         System.out.println ();
     }
     public void printPrison(){
-       //graph will printed
+        Block[] blocks = blockStructureGraph.dfs ();
+        for (Block block : blocks) {
+            System.out.println (block);
+        }
     }
 
 }

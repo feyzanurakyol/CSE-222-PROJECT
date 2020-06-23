@@ -67,7 +67,13 @@ public interface GraphADT<E> {
      * @param vertex a vertex will be removed, if it is present.
      */
     void deleteVertex(E vertex);
-
+    /**
+     * Deletes an individual vertex.
+     * Check Report for more information.
+     * @param oldVertex a vertex will be changed, if it is present.
+     * @param newVertex a vertex will be added.
+     */
+    void setVertex(E oldVertex,E newVertex);
     /**
      * Performs Breadth-first search of the graph by starting given vertex.
      * @param startVertex start vertex of search

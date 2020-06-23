@@ -218,15 +218,13 @@ public class ManageChiefJailer extends Jailer {
         int k;
         for (k = 0; k < 45; k++) System.out.print("-");
         System.out.println();
-        System.out.println("Enter new workplace's block: ");
+        System.out.println("Enter new workplace's block(A/B1/B2): ");
         String blockName = scan.nextLine();
-        Block block = new Block(blockName);
-
-        System.out.println("Enter new workplace's floor: ");
+        System.out.println("Enter new workplace's floor(0/1): ");
         int floor = scan.nextInt();
         System.out.println("Enter the Jailer's id: ");
         int jailerId = scan.nextInt();
-        dataBase.getPersonnel(jailerId).setPlace(new WorkPlace(block, floor));
+        dataBase.getPersonnel(jailerId).setPlace(new WorkPlace(blockName, floor));
     }
 
     public void setYourSH(){
@@ -309,14 +307,12 @@ public class ManageChiefJailer extends Jailer {
         int k;
         for (k = 0; k < 45; k++) System.out.print("-");
         System.out.println();
-        System.out.println("Enter your new workplace's block: ");
+        System.out.println("Enter your new workplace's block(A/B1/B2): ");
         String blockName = scan.nextLine();
-        Block block = new Block(blockName);
-
-        System.out.println("Enter your new workplace's floor: ");
+        System.out.println("Enter your new workplace's floor(0/1): ");
         int floor = scan.nextInt();
 
-        this.setPlace(new WorkPlace(block, floor));
+        this.setPlace(new WorkPlace(blockName, floor));
     }
 
     public void addVisitor(){
