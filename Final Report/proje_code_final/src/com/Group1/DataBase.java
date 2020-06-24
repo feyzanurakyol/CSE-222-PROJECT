@@ -358,6 +358,9 @@ public class DataBase {
     public Inmate getInmate(int inmateID){
         return prisonersTree.find (new Inmate (inmateID));
     }
+    public int getInmateSize(){
+        return prisonersTree.getSize ();
+    }
     public boolean addPersonnel(Personnel personnel){
         if (fileFlag)
             readAndWriteFile.writePersonnel (personnel);

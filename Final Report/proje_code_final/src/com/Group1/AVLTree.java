@@ -10,7 +10,8 @@ public class AVLTree < E
     extends BinarySearchTreeWithRotate < E > {
 
   // Insert nested class AVLNode<E> here.
-
+ private int size=0;
+ private boolean removed = false;
   // Data Fields
   /** Flag to indicate that height of tree has increased. */
   private boolean increase;
@@ -61,6 +62,8 @@ public class AVLTree < E
   public boolean add(E item) {
     increase = false;
     root = add( (AVLNode < E > ) root, item);
+    if (addReturn)
+      size++;
     return addReturn;
   }
 
@@ -117,7 +120,7 @@ public class AVLTree < E
     }
 
   }
-
+  public int getSize(){return size;}
   /**** BEGIN EXERCISE ****/
   /** Delete starter method. Removes the given object
         from the AVL tree.
@@ -128,7 +131,10 @@ public class AVLTree < E
    */
   public E delete(E item) {
     decrease = false;
+    removed=false;
     root = delete( (AVLNode < E > ) root, item);
+    if (removed)
+      size--;
     return deleteReturn;
   }
 
@@ -149,6 +155,7 @@ public class AVLTree < E
     }
     if (item.compareTo(localRoot.data) == 0) {
       // item is in the tree -- need to remove it
+      removed=true;
       deleteReturn = localRoot.data;
       return findReplacementNode(localRoot);
     }
