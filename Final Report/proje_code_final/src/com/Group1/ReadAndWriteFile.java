@@ -41,7 +41,7 @@ public class ReadAndWriteFile {
             for (String food:menu.getAllMenu ()) {
                 foodMenu.write (food+",");
             }
-            foodMenu.write ("\n");
+            foodMenu.write (System.lineSeparator ());
             foodMenu.close ();
         }catch (IOException e){
             e.printStackTrace ();
@@ -59,10 +59,10 @@ public class ReadAndWriteFile {
                 if (i!=days.size ()-1)
                     personel.write (days.get (i)+",");
                 else
-                    personel.write (days.get (i)+"\n");
+                    personel.write (days.get (i)+System.lineSeparator ());
             }
             workplace = new FileWriter (workplaceFile,true);
-            workplace.write (personnel.getPlace ().block+","+personnel.getPlace ().floor+"\n");
+            workplace.write (personnel.getPlace ().block+","+personnel.getPlace ().floor+System.lineSeparator ());
             workplace.close ();
             personel.close ();
         }catch (IOException e){
@@ -76,7 +76,7 @@ public class ReadAndWriteFile {
                     healthAppointment.getOwnerID ()+","+ healthAppointment.getExplanation ()+","
                     +healthAppointment.getHealthStatus ().getBloodGroup ()+","+healthAppointment.getHealthStatus ().getLastControlResult ()
                     +","+healthAppointment.getHealthStatus ().getHeight ()+
-                    ","+healthAppointment.getHealthStatus ().getWeight ()+","+healthAppointment.getHealthStatus ().getPulse ()+"\n");
+                    ","+healthAppointment.getHealthStatus ().getWeight ()+","+healthAppointment.getHealthStatus ().getPulse ()+System.lineSeparator ());
             healthAppointments.close ();
         }catch (IOException e){
             e.printStackTrace ();
@@ -85,9 +85,10 @@ public class ReadAndWriteFile {
     public void writeInmate(Inmate inmate){
         try {
             inmates = new FileWriter (inmatesFile,true);
+
             inmates.write (inmate.getId ()+","+inmate.getName ()+","+inmate.getCrimeType ()+inmate.getExitTime ()+
                     inmate.getWardNo ()+","+inmate.getHealthStatus ().getBloodGroup ()+","+inmate.getHealthStatus ().getHeight ()+
-                    ","+inmate.getHealthStatus ().getWeight ()+","+inmate.getHealthStatus ().getPulse ()+"\n");
+                    ","+inmate.getHealthStatus ().getWeight ()+","+inmate.getHealthStatus ().getPulse ()+System.lineSeparator ());
             inmates.close ();
         }catch (IOException e){
            e.printStackTrace ();
@@ -105,7 +106,7 @@ public class ReadAndWriteFile {
     public void writeTodo(ToDo toDo){
         try {
             todos = new FileWriter (todosFile,true);
-            todos.write (toDo.getId ()+","+toDo.getJob ()+","+toDo.getOwnerID ()+"\n");
+            todos.write (toDo.getId ()+","+toDo.getJob ()+","+toDo.getOwnerID ()+System.lineSeparator ());
             todos.close ();
         }catch (IOException e){
            e.printStackTrace ();
@@ -115,7 +116,7 @@ public class ReadAndWriteFile {
         try {
             visitors = new FileWriter (visitorsFile,true);
             visitors.write (visitor.name+","+visitor.surname+","+visitor.tcNumber+","+visitor.inmateNumber
-                    +","+visitor.telephoneNumber+","+visitor.date+","+visitor.entranceTime+","+visitor.exitTime+","+"\n");
+                    +","+visitor.telephoneNumber+","+visitor.date+","+visitor.entranceTime+","+visitor.exitTime+","+System.lineSeparator ());
             visitors.close ();
         }catch (IOException e){
             e.printStackTrace ();
@@ -305,12 +306,12 @@ public class ReadAndWriteFile {
                     for (Days day:newP.shift.workdays) {
                         writer.append (day+",");
                     }
-                    writer.append ("\n");
+                    writer.append (System.lineSeparator ());
                     writer2.append (newP.getPlace ().block+","+newP.getPlace ().floor);
                 }
                 else {
-                    writer.append (line+"\n");
-                    writer2.append (line2+"\n");
+                    writer.append (line+System.lineSeparator ());
+                    writer2.append (line2+System.lineSeparator ());
                 }
             }
             FileWriter  fileWriter = new FileWriter (personelFile);
@@ -337,10 +338,10 @@ public class ReadAndWriteFile {
                     for (String food:newM.getAllMenu ()) {
                         writer.append (food+",");
                     }
-                    writer.append ("\n");
+                    writer.append (System.lineSeparator ());
                 }
                 else {
-                    writer.append (line+"\n");
+                    writer.append (line+System.lineSeparator ());
                 }
             }
             FileWriter  fileWriter = new FileWriter (foodMenuFile);
@@ -360,10 +361,10 @@ public class ReadAndWriteFile {
                 String[] information = line.split(",");
                 if (Integer.parseInt (information[0])==oldHealApp.getApID ()){
                     writer.append (newHealthAppointment.getApID ()+","+newHealthAppointment.getDate ()+","+
-                            newHealthAppointment.getOwnerID ()+","+newHealthAppointment.getExplanation ()+"\n");
+                            newHealthAppointment.getOwnerID ()+","+newHealthAppointment.getExplanation ()+System.lineSeparator ());
                 }
                 else {
-                    writer.append (line+"\n");
+                    writer.append (line+System.lineSeparator ());
                 }
             }
             FileWriter  fileWriter = new FileWriter (healthAppointmentsFile);
@@ -385,10 +386,10 @@ public class ReadAndWriteFile {
                     writer.append (newInmate.getId ()+","+newInmate.getName ()+","+newInmate.getCrimeType ()+newInmate.getExitTime ()+
                             newInmate.getWardNo ()+","+newInmate.getHealthStatus ().getBloodGroup ()+","+newInmate.getHealthStatus ().getLastControlResult ()+
                             ","+newInmate.getHealthStatus ().getHeight ()+","+newInmate.getHealthStatus ().getWeight ()+","+
-                            newInmate.getHealthStatus ().getPulse ()+"\n");
+                            newInmate.getHealthStatus ().getPulse ()+System.lineSeparator ());
                 }
                 else {
-                    writer.append (line+"\n");
+                    writer.append (line+System.lineSeparator ());
                 }
             }
             FileWriter  fileWriter = new FileWriter (inmatesFile);
@@ -417,10 +418,10 @@ public class ReadAndWriteFile {
             while ((line = todosR.readLine()) != null) {
                 String[] information = line.split(",");
                 if (Integer.parseInt (information[0])==oldToDo.getId ()){
-                    writer.append (newTodo.getId ()+","+newTodo.getJob ()+","+newTodo.getOwnerID ()+"\n");
+                    writer.append (newTodo.getId ()+","+newTodo.getJob ()+","+newTodo.getOwnerID ()+System.lineSeparator ());
                 }
                 else {
-                    writer.append (line+"\n");
+                    writer.append (line+System.lineSeparator ());
                 }
             }
             FileWriter  fileWriter = new FileWriter (todosFile);
@@ -440,10 +441,10 @@ public class ReadAndWriteFile {
                 String[] information = line.split(",");
                 if (information[2].equals (oldVisitor.tcNumber)){
                     writer.append (newVisitor.name+","+newVisitor.surname+","+newVisitor.tcNumber+","+newVisitor.inmateNumber
-                            +","+newVisitor.telephoneNumber+","+newVisitor.date+","+newVisitor.entranceTime+"\n");
+                            +","+newVisitor.telephoneNumber+","+newVisitor.date+","+newVisitor.entranceTime+System.lineSeparator ());
                 }
                 else {
-                    writer.append (line+"\n");
+                    writer.append (line+System.lineSeparator ());
                 }
             }
             FileWriter  fileWriter = new FileWriter (visitorsFile);
@@ -464,8 +465,8 @@ public class ReadAndWriteFile {
             while ((line = personelR.readLine()) != null && (line2 = workplaceR.readLine ())!=null) {
                 String[] information = line.split(",");
                 if (Integer.parseInt (information[0]) != old.id){
-                    writer.append (line+"\n");
-                    writer2.append (line2+"\n");
+                    writer.append (line+System.lineSeparator ());
+                    writer2.append (line2+System.lineSeparator ());
                 }
             }
             FileWriter  fileWriter = new FileWriter (personelFile);
@@ -488,7 +489,7 @@ public class ReadAndWriteFile {
             while ((line = foodMenuR.readLine()) != null) {
                 String[] information = line.split(",");
                 if (!information[0].equals (old.getDate ())){
-                    writer.append (line+"\n");
+                    writer.append (line+System.lineSeparator ());
                 }
             }
             FileWriter  fileWriter = new FileWriter (foodMenuFile);
@@ -507,7 +508,7 @@ public class ReadAndWriteFile {
             while ((line = healthAppointmentsR.readLine()) != null) {
                 String[] information = line.split(",");
                 if (Integer.parseInt (information[0])!=oldHealApp.getApID ()){
-                    writer.append (line+"\n");
+                    writer.append (line+System.lineSeparator ());
                 }
             }
             FileWriter  fileWriter = new FileWriter (healthAppointmentsFile);
@@ -526,7 +527,7 @@ public class ReadAndWriteFile {
             while ((line = inmatesR.readLine()) != null) {
                 String[] information = line.split(",");
                 if (Integer.parseInt (information[0])!=oldInmate.getId ()){
-                    writer.append (line+"\n");
+                    writer.append (line+System.lineSeparator ());
                 }
             }
             FileWriter  fileWriter = new FileWriter (inmatesFile);
@@ -555,7 +556,7 @@ public class ReadAndWriteFile {
             while ((line = todosR.readLine()) != null) {
                 String[] information = line.split(",");
                 if (Integer.parseInt (information[0])!=oldToDo.getId ()){
-                    writer.append (line+"\n");
+                    writer.append (line+System.lineSeparator ());
                 }
             }
             FileWriter  fileWriter = new FileWriter (todosFile);
@@ -574,7 +575,7 @@ public class ReadAndWriteFile {
             while ((line = visitorsR.readLine()) != null) {
                 String[] information = line.split(",");
                 if (!information[2].equals (oldVisitor.tcNumber)){
-                    writer.append (line+"\n");
+                    writer.append (line+System.lineSeparator ());
                 }
             }
             FileWriter  fileWriter = new FileWriter (visitorsFile);
