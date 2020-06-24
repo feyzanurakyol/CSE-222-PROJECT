@@ -11,9 +11,7 @@ public class ManageDoctor {
     // it is for hold the patient in room. if doctor accept new patient
     // add to array list . if we do queue we cannt to reach patient when we
     // want heal it.
-    private ArrayList<HealthAppointment> patient;
     private HealthAppointment current_ha = null;
-    private static int BED_CAPACITY = 100;
     /**
      * One parameter constructor.
      * This class needs to Data object and Print Data object to make operations.
@@ -21,7 +19,6 @@ public class ManageDoctor {
      * */
     public ManageDoctor(DataBase data){
         this.database = data;
-        patient = new ArrayList<>();
     }
     /**
      * This method manages the cook tasks
@@ -30,33 +27,12 @@ public class ManageDoctor {
      * */
     public void manage( Personnel doctor){
         int choose;
-        int bedNumber = -1;
         Scanner scan = new Scanner(System.in);
         do {
             showMenu (doctor);
             choose = GetChoiceFromUser.getSubChoice (4,"Answer: ");
             switch(choose) {
                 case 1:
-                    if (patient.isEmpty()) {
-                        System.out.println("No one currently at prison's hospital");
-                        choose = -1;//go back since there are no patients in the prison's hospital
-                    } else {
-                        System.out.println("Bed's filled:");
-                        System.out.print("---");
-                        for (int i = 0; i < patient.size(); ++i)
-                            System.out.print((i+1) + "---");
-                        System.out.println();
-                        System.out.println("Enter patient's bed number ( enter any other number to go back )");
-                        bedNumber = Integer.parseInt(scan.nextLine());
-                        if (bedNumber >= 1 && bedNumber <= patient.size())
-                            current_ha = patient.get(bedNumber-1);
-                        else
-                            choose = -1;//go again
-                    }
-                    if (choose!=-1)
-                        healWithPatient (doctor);
-                    break;
-                case 2:
                     current_ha = database.deleteHealthAppointmentFromTop();
                     if (current_ha == null) {
                         System.out.println("No new health appointments");
@@ -65,13 +41,11 @@ public class ManageDoctor {
                     if (choose!=-1)
                         healWithPatient (doctor);
                     break;
-                case 3:
+                case 2:
                     database.printLastMenu ();
                     break;
-                case 4:
+                case 3:
                     checkMyTodo (doctor);
-                    break;
-                default:
                     break;
             }
 
@@ -143,16 +117,13 @@ public class ManageDoctor {
         System.out.println("What Do you want to do ?");
         for ( k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n"+"   ");
-        System.out.println("[1] Take patient from the prison's hospital");
+        System.out.println("[1] Get next appointment");
         for ( k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n"+"   ");
-        System.out.println("[2] Get next appointment");
+        System.out.println("[2] Print Last Menu");
         for ( k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n"+"   ");
-        System.out.println("[3] Print Last Menu");
-        for ( k = 0; k < 45; k++) System.out.print("-");
-        System.out.print("\n"+"   ");
-        System.out.println("[4] Check My Todo");
+        System.out.println("[3] Check My Todo");
         for ( k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n"+"   ");
         System.out.println("[0] Main Menu.");
