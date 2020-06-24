@@ -5,8 +5,7 @@ import java.util.List;
 
 /**
  * This class keeps all data regarding the system in an appropriate data structure.
- * It also operate the data.
- * It keeps data by using List,Queue and Binary Search Tree.
+ * It also operates the data.
  * We wrote this class for reusable purpose, we will use this operations later.
  * */
 public class DataBase {
