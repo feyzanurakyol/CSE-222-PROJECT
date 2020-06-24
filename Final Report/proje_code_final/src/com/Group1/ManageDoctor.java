@@ -23,7 +23,7 @@ public class ManageDoctor {
     /**
      * This method manages the cook tasks
      * First it gets a choice from user and it makes that operation
-     * @param doctor ID of cook that will be manage the system.
+     * @param doctor doctor that will be manage the system.
      * */
     public void manage( Personnel doctor){
         int choose;

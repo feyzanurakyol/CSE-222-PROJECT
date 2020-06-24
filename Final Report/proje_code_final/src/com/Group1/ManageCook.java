@@ -20,7 +20,7 @@ public class ManageCook {
     /**
      * This method manages the cook tasks
      * First it gets a choice from user and it makes that operation
-     * @param cook ID of cook that will be manage the system.
+     * @param cook cook that will be manage the system.
      * */
     public void manage(Personnel cook){
         int choose;

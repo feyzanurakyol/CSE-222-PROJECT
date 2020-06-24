@@ -17,7 +17,7 @@ public class ManageGovernor {
     /**
      * This method manages the governor
      * First it gets a choice from user and it makes that operation
-     * @param governor ID of Governor that will be manage the system.
+     * @param governor Governor that will be manage the system.
      * */
     public void manage(Personnel governor){
         int choose;
