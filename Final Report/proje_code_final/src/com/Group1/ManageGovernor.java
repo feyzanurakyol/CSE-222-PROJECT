@@ -54,6 +54,16 @@ public class ManageGovernor {
                 case 10:
                     database.printLastMenu ();
                     break;
+                case 11:
+                	database.printAllPersonnel();
+                	break;
+                case 12: 
+                	database.printAllPrisoners();
+                	break;
+                case 13: 
+                	database.printAllActiveToDos();
+                	database.printAllPassiveToDo();
+                	break;
                 default:
                     break;
             }
@@ -88,6 +98,12 @@ public class ManageGovernor {
         System.out.println("[9] Add Urgent Todo");
         for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
         System.out.println("[10] Print Last Menu");
+        for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
+        System.out.println("[11] Print All Personnels");
+        for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
+        System.out.println("[12] Print All Inmates");
+        for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println(); 
+        System.out.println("[13] Print All To-do's");
         for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
         System.out.println("[0] Main Menu.");
         for ( k = 0; k < 45; k++) System.out.print("-");
