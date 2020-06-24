@@ -26,7 +26,7 @@ public class ManageCook {
         int choose;
         do {
             showMenu (cook);
-            choose = GetChoiceFromUser.getSubChoice (6,"Answer: ");
+            choose = GetChoiceFromUser.getSubChoice (7,"Answer: ");
             switch(choose) {
                 case 1:
                     addMenu();
@@ -44,6 +44,9 @@ public class ManageCook {
                     database.printLastMenu ();
                     break;
                 case 6:
+                    database.ListMenu();
+                    break;
+                case 7:
                     checkMyTodo (cook);
                     break;
                 default:
@@ -175,7 +178,10 @@ public class ManageCook {
         System.out.println("[5] Print Last Menu");
         for ( k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n"+"   ");
-        System.out.println("[6] Check My Todo");
+        System.out.println("[6] Print All Menu");
+        for ( k = 0; k < 45; k++) System.out.print("-");
+        System.out.print("\n"+"   ");
+        System.out.println("[7] Check My Todo");
         for ( k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n"+"   ");
         System.out.println("[0] Main Menu.");

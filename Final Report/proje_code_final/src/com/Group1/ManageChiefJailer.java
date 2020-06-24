@@ -239,6 +239,7 @@ public class ManageChiefJailer extends ManageJailer {
             for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
             System.out.println("Enter name: ");
             String name = scan.nextLine();
+            name = scan.nextLine();
             for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
             System.out.println("Enter surname: ");
             String surname = scan.nextLine();
@@ -265,6 +266,7 @@ public class ManageChiefJailer extends ManageJailer {
         dataBase.printAllVisitor();
 
     }
+    
     public void removeVisitor(){
         int k;
         Scanner scan = new Scanner(System.in);
@@ -273,15 +275,24 @@ public class ManageChiefJailer extends ManageJailer {
         String tc = scan.nextLine();
         if (dataBase.getVisitorWithTC(tc) == null)
             throw new NoSuchElementException("No Visitor found in given TC!");
-        removeVisitor(tc,dataBase);
-    }
 
-    protected void removeVisitor(String tc,DataBase dataBase)
+        for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
+        System.out.println("Enter Visitor's exit time:");
+        String exitTime = scan.nextLine();
+
+        removeVisitor(tc,exitTime,dataBase);
+        dataBase.printAllVisitor();
+    }
+    
+    protected void removeVisitor(String tc,String exitTime,DataBase dataBase)
     {
         if (dataBase.getVisitorWithTC(tc) == null)
             throw new NoSuchElementException("No Visitor found in given TC!");
+        dataBase.getVisitorWithTC(tc).setExitTime(exitTime);
         dataBase.deleteVisitor(new Inmate(dataBase.getVisitorWithTC(tc).inmateNumber) ,dataBase.getVisitorWithTC(tc));
     }
+
+   
 
 }
 

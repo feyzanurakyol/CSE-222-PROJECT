@@ -156,7 +156,8 @@ public class ManageJailer {
 			int apId = scan.nextInt();
 			for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
 			System.out.println("Enter explanation: ");
-			String exp = scan.nextLine();
+			String exp = scan.nextLine();			
+			exp = scan.nextLine();
 			for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
 			dataBase.addHealthAppointmentToTheTop (new HealthAppointment(apId,DateFormat.getInstance().format(new Date()),inmate.getId(),exp,inmate.getHealthStatus()));
 			dataBase.printAllHealthAppointments();
@@ -190,14 +191,16 @@ public class ManageJailer {
 		if (dataBase.getPersonnel(id)==null)
 			throw new NoSuchElementException("No matching jailer found!");
 
-		System.out.println("Shift hours:" );
+		System.out.println("Working Days:" );
 		for ( k = 0; k < 45; k++) System.out.print("-");
 		System.out.println("\n");
 
 		for (int i = 0; i < dataBase.getPersonnel(id).getShift().workdays.size(); i++) {
 			System.out.println(dataBase.getPersonnel(id).getShift().workdays.get(i));
 		}
+		System.out.println("\nShift; " + dataBase.getPersonnel(id).getShift().shift.name());
 	}
+
 
 	public void getDepartment(){
 		int k;
