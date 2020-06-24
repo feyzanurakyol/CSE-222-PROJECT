@@ -1,2 +1,2 @@
-10000,ali kara,FELONY,5,30,a+,good,1.50,87,0.80
-20000,ahmet akçe,MISDEMEANOR,5,30,a+,good,1.50,87,0.80
+10000,ali kara,FELONY,11/01/2025,2,a+,good,1.50,87,0.80
+20000,ahmet akçe,MISDEMEANOR,01/05/2022,3,a+,good,1.50,87,0.80

@@ -85,7 +85,7 @@ public class ReadAndWriteFile {
     public void writeInmate(Inmate inmate){
         try {
             inmates = new FileWriter (inmatesFile,true);
-            inmates.write (inmate.getId ()+","+inmate.getName ()+","+inmate.getCrimeType ()+inmate.getRemainingDay ()+
+            inmates.write (inmate.getId ()+","+inmate.getName ()+","+inmate.getCrimeType ()+inmate.getExitTime ()+
                     inmate.getWardNo ()+","+inmate.getHealthStatus ().getBloodGroup ()+","+inmate.getHealthStatus ().getHeight ()+
                     ","+inmate.getHealthStatus ().getWeight ()+","+inmate.getHealthStatus ().getPulse ()+"\n");
             inmates.close ();
@@ -228,7 +228,7 @@ public class ReadAndWriteFile {
             while ((line = inmatesR.readLine()) != null) {
                 String[] information = line.split(",");
                 inmate =new Inmate (Integer.parseInt (information[0]),information[1],CrimeType.valueOf (information[2]),
-                        Integer.parseInt (information[3]),Integer.parseInt (information[4]),
+                        information[3],Integer.parseInt (information[4]),
                         new HealthStatus (information[5],information[6], Double.parseDouble (information[7]),
                                 Double.parseDouble (information[8]), Double.parseDouble (information[9])));
                 dataBase.addInmate (inmate);
@@ -382,7 +382,7 @@ public class ReadAndWriteFile {
             while ((line = inmatesR.readLine()) != null) {
                 String[] information = line.split(",");
                 if (Integer.parseInt (information[0])==oldInmate.getId ()){
-                    writer.append (newInmate.getId ()+","+newInmate.getName ()+","+newInmate.getCrimeType ()+newInmate.getRemainingDay ()+
+                    writer.append (newInmate.getId ()+","+newInmate.getName ()+","+newInmate.getCrimeType ()+newInmate.getExitTime ()+
                             newInmate.getWardNo ()+","+newInmate.getHealthStatus ().getBloodGroup ()+","+newInmate.getHealthStatus ().getLastControlResult ()+
                             ","+newInmate.getHealthStatus ().getHeight ()+","+newInmate.getHealthStatus ().getWeight ()+","+
                             newInmate.getHealthStatus ().getPulse ()+"\n");

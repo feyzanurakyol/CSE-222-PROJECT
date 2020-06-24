@@ -1,6 +1,10 @@
 package com.Group1;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class GovernorInterfaceInfo {
 	public static Personnel addJailerInfo(DataBase dataBase) {
@@ -73,7 +77,43 @@ public class GovernorInterfaceInfo {
     }
     
     public static Inmate addInmateInfo(DataBase dataBase) {
-    	return  null;
-
+        int id = GetChoiceFromUser.getIDFromUser (dataBase);
+        String name = GetChoiceFromUser.getStringFromUser ("Enter full name of Inmate: ");
+        String crime=GetChoiceFromUser.getStringFromUser ("Enter Crime Type of Inmate(FELONY,MISDEMEANOR,FELONY_MISDEMEANOR, INFRACTION): ");
+        String date;
+        boolean is_ok =true;
+        do {
+            is_ok =true;
+            date =GetChoiceFromUser.getStringFromUser ("Enter Exit Date(dd/MM/yyyy): ");
+            if (getDay (date)<=0){
+                System.out.println ("Date is wrong enter again!");
+                is_ok=false;
+            }
+        }while (!is_ok);
+        int wn;
+        do {
+            is_ok =true;
+            wn =GetChoiceFromUser.getNumber ("Enter ward No(0/1/2/3/4/5/6/7/8/9/10): ");
+            if (wn<1 || wn>10){
+                System.out.println ("No is wrong enter again!");
+                is_ok=false;
+            }
+        }while (!is_ok);
+        HealthStatus healthStatus= getHealthInfo ();
+    	return  new Inmate (id,name,CrimeType.valueOf (crime),date,wn,healthStatus);
+    }
+    //calculate remaining date
+    private static int getDay(String exitDate) {
+        SimpleDateFormat myFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String todayDate = myFormat.format(new Date ());
+        try {
+            Date date1 = myFormat.parse(exitDate);
+            Date date2 = myFormat.parse(todayDate);
+            long diff = date1.getTime() - date2.getTime();
+            return (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return -1;
     }
 }
