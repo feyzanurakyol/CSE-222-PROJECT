@@ -239,6 +239,7 @@ public class ManageChiefJailer extends ManageJailer {
             for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
             System.out.println("Enter name: ");
             String name = scan.nextLine();
+            name = scan.nextLine();
             for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
             System.out.println("Enter surname: ");
             String surname = scan.nextLine();
