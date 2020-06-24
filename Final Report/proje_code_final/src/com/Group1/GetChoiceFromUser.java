@@ -60,7 +60,9 @@ public class GetChoiceFromUser {
         System.out.print(message);
         try {
             choice = input.nextInt();
-            while (choice<1){
+            if(choice == -1)
+            	return -1;
+            while (choice<1 && choice != -1){
                 System.out.print("Please enter a number bigger than 0: ");
                 choice=input.nextInt();
             }
