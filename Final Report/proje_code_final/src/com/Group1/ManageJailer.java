@@ -198,7 +198,7 @@ public class ManageJailer {
 		for (int i = 0; i < dataBase.getPersonnel(id).getShift().workdays.size(); i++) {
 			System.out.println(dataBase.getPersonnel(id).getShift().workdays.get(i));
 		}
-		System.out.println("\n Shift; " + dataBase.getPersonnel(id).getShift().shift.name());
+		System.out.println("\nShift; " + dataBase.getPersonnel(id).getShift().shift.name());
 	}
 
 
