@@ -53,7 +53,7 @@ public class ManageAdministrator {
 		HealthStatus healthStatus= getHealthInfo ();
 		PersonnelShift personnelShift= getShiftInfo ();
 		WorkPlace workPlace = place ();
-		Personnel p = new Personnel (id,name,surname,Encryption.encryptPassword (password),JobType.Governor,
+		Personnel p = new Personnel (id,name,surname,password,JobType.Governor,
 				healthStatus,personnelShift,workPlace);
 		if (db.addPersonnel(p))
 			System.out.println ("Governor was Added.");
