@@ -51,6 +51,7 @@ public class ManageGovernor {
                     break;
                 case 9:
                     addUrgentTodo ();
+                    break;
                 case 10:
                     database.printLastMenu ();
                     break;
