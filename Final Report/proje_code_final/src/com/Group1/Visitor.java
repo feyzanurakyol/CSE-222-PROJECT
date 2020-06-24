@@ -28,7 +28,7 @@ public class Visitor implements Comparable<Visitor>{
 		this.telephoneNumber = telephoneNumber;
 		this.date = date;
 		this.entranceTime = entranceTime;
-		this.exitTime = null;	//now is null
+		this.exitTime = "Not assigned";
 	}
 	/**Get visitor's name*/
 	public String getName(){
