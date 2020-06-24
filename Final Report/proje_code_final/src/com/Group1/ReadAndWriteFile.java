@@ -61,7 +61,7 @@ public class ReadAndWriteFile {
                 else
                     personel.write (days.get (i)+"\n");
             }
-            workplace = new FileWriter (personelFile,true);
+            workplace = new FileWriter (workplaceFile,true);
             workplace.write (personnel.getPlace ().block+","+personnel.getPlace ().floor+"\n");
             workplace.close ();
             personel.close ();
