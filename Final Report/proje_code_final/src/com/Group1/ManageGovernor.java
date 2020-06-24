@@ -111,15 +111,23 @@ public class ManageGovernor {
             choose1 = GetChoiceFromUser.getSubChoice (4,"Answer: ");
             if(choose1 == 1) {
                 database.addPersonnel(GovernorInterfaceInfo.addJailerInfo(database));
+                System.out.println("Personnel was added!");
+                for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
             }
             else if(choose1 == 2) {
                 database.addPersonnel(GovernorInterfaceInfo.addChiefJailerInfo(database));
+                System.out.println("Personnel was added!");
+                for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
             }
             else if(choose1 == 3) {
                 database.addPersonnel(GovernorInterfaceInfo.addCookInfo(database));
+                System.out.println("Personnel was added!");
+                for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
             }
             else if(choose1 == 4) {
                 database.addPersonnel(GovernorInterfaceInfo.addDoctorInfo(database));
+                System.out.println("Personnel was added!");
+                for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
             }
 
         } while(choose1 != 0);
@@ -137,6 +145,7 @@ public class ManageGovernor {
         }while (temp==null);
         if (id!=-1)
             database.deletePersonnel (database.getPersonnel (id));
+            System.out.println("Personnel was removed!");
     }
     private void updatePersonnel(){
         Personnel temp=null;
@@ -155,18 +164,26 @@ public class ManageGovernor {
             if(Job.equals(JobType.Jailer)) {
                 Personnel jailer = GovernorInterfaceInfo.addJailerInfo(database);
                 database.updatePersonnel(temp, jailer);
+                System.out.println("Personnel was updated!");
+    	        for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
             }
             else if(Job.equals(JobType.ChiefJailer)) {
                 Personnel chiefjailer = GovernorInterfaceInfo.addChiefJailerInfo(database);
                 database.updatePersonnel(temp, chiefjailer);
+                System.out.println("Personnel was updated!");
+    	        for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
             }
             else if(Job.equals(JobType.Doctor)) {
                 Personnel doctor1 = GovernorInterfaceInfo.addDoctorInfo(database);
                 database.updatePersonnel(temp, doctor1);
+                System.out.println("Personnel was updated!");
+    	        for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
             }
             else if(Job.equals(JobType.Cook)) {
                 Personnel cook1 = GovernorInterfaceInfo.addCookInfo(database);
                 database.updatePersonnel(temp, cook1);
+                System.out.println("Personnel was updated!");
+    	        for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
             }
         }
 
