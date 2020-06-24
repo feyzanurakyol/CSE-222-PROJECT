@@ -23,7 +23,6 @@ public class DataBase {
     private boolean fileFlag = false;
     private boolean alert = false;
     private ReadAndWriteFile readAndWriteFile;
-    private ArrayList<Integer> IDList ;
     public DataBase(){
         menuList = new LinkedList<> ();
         visitorsMap = new TreeMap<> ();
@@ -33,7 +32,6 @@ public class DataBase {
         prisonersTree = new AVLTree<> ();
         allPersonnel = new SkipList<> ();
         readAndWriteFile = new ReadAndWriteFile (this);
-        IDList = new ArrayList<> ();
         dailyInmateCensusStack = new Stack<> ();
         Block[] blocks = new Block[]{new Block ("A"),new Block ("B1"),new Block ("B2")};
         blockStructureGraph = new AdjacencyListMatrix<> (3,false,blocks);
@@ -376,13 +374,6 @@ public class DataBase {
         }
         return null;
     }
-    /***
-     * Add given id in arraylist
-     * @param id will be added.
-     */
-    public void addID(int id){
-        IDList.add(id);
-    }
 
     /***
      * This method checks given id is used or not ?
@@ -390,12 +381,7 @@ public class DataBase {
      * @return true if it is not used
      */
     public boolean IDUsed(int id){
-        for (int i = 0 ; i< IDList.size();i++){
-            if (IDList.get(i) == id){
-                return true;
-            }
-        }
-        return false;
+        return getPersonnel (id) != null;
     }
     public void addInmateCensus(int numberOfInmate,String date){
         dailyInmateCensusStack.push (new DailyInmateCensus (numberOfInmate,date));

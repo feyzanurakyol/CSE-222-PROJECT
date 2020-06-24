@@ -119,7 +119,6 @@ public class GetChoiceFromUser {
                     is_in=true;
                 }
             }while(is_in);
-            data.addID(id);
         }
         catch (Exception e){
             System.out.print("Please enter a valid value!\n");
