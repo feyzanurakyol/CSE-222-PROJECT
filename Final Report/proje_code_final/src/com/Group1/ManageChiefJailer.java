@@ -45,22 +45,25 @@ public class ManageChiefJailer extends ManageJailer {
         System.out.println("[7] Remove a visitor");
         for (k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n" + "   ");
-        System.out.println("[8] Print all visitors.");
+        System.out.println("[8] Enter exit time of a visitor");
         for (k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n" + "   ");
-        System.out.println("[9] Get a prisoner");
+        System.out.println("[9] Print all visitors.");
         for (k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n" + "   ");
-        System.out.println("[10] Get shift our");
+        System.out.println("[10] Get a prisoner");
         for (k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n" + "   ");
-        System.out.println("[11] Get department");
+        System.out.println("[11] Get shift our");
         for (k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n" + "   ");
-        System.out.println("[12] Set shift our.");
+        System.out.println("[12] Get department");
         for (k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n" + "   ");
-        System.out.println("[13] Set department");
+        System.out.println("[13] Set shift our.");
+        for (k = 0; k < 45; k++) System.out.print("-");
+        System.out.print("\n" + "   ");
+        System.out.println("[14] Set department");
         for (k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n");
 
@@ -72,7 +75,7 @@ public class ManageChiefJailer extends ManageJailer {
             int choose;
             do {
                 showMenu(chiefJailer);
-                choose = GetChoiceFromUser.getSubChoice(15, "Answer: ");
+                choose = GetChoiceFromUser.getSubChoice(14, "Answer: ");
 
                 switch (choose) {
                     case 1:
@@ -98,34 +101,56 @@ public class ManageChiefJailer extends ManageJailer {
                         removeVisitor();
                         break;
                     case 8:
+                        enterExitTime();
+                        break;
+                    case 9:
                         dataBase.printAllVisitor();
                         break;
 
-                    case 9:
+                    case 10:
                         getPrison();
                         break;
 
-                    case 10:
+                    case 11:
                         getShiftOur();
                         break;
 
-                    case 11:
+                    case 12:
                         getDepartment();
                         break;
-                    case 12:
+                    case 13:
                         setJailerSH();
                         break;
-                    case 13:
+                    case 14:
                         setJailerDP();
                         break;
                     default:
                         break;
-
                 }
             } while (choose != 0);
         } catch (Exception a){
             System.out.println(a.toString());
         }
+    }
+    
+    public void enterExitTime(){
+        int k;
+        Scanner scan = new Scanner (System.in);
+        System.out.println("Enter visitor TC: ");
+        String visitorTc = scan.nextLine();
+        Visitor visitor = dataBase.getVisitorWithTC (visitorTc);
+        if (visitor != null){
+            for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
+            System.out.println("Enter exit time: ");
+            String exitTime = scan.nextLine();
+            visitor.exitTime = exitTime;
+        }
+        else{
+            System.out.println ("Visitor was not found!");
+            throw new NoSuchElementException("No Visitor found in given TC!");
+        }
+        dataBase.printAllVisitor();
+
     }
 
     public void setJailerSH(){
@@ -200,9 +225,6 @@ public class ManageChiefJailer extends ManageJailer {
                 case 3:
                     shift = Shifts.night;
                     break;
-                default:
-                    System.out.println("Not a valid day! Enter again");
-                    break;
             }
         } while (!(choose == 1 || choose == 2 || choose == 3));
 
@@ -268,7 +290,7 @@ public class ManageChiefJailer extends ManageJailer {
 
     }
     
-    public void removeVisitor(){
+       public void removeVisitor(){
         int k;
         Scanner scan = new Scanner(System.in);
         for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
@@ -277,23 +299,16 @@ public class ManageChiefJailer extends ManageJailer {
         if (dataBase.getVisitorWithTC(tc) == null)
             throw new NoSuchElementException("No Visitor found in given TC!");
 
-        for ( k = 0; k < 45; k++) System.out.print("-"); System.out.println();
-        System.out.println("Enter Visitor's exit time:");
-        String exitTime = scan.nextLine();
-
-        removeVisitor(tc,exitTime,dataBase);
+        removeVisitor(tc,dataBase);
         dataBase.printAllVisitor();
     }
-    
-    protected void removeVisitor(String tc,String exitTime,DataBase dataBase)
+
+    protected void removeVisitor(String tc,DataBase dataBase)
     {
         if (dataBase.getVisitorWithTC(tc) == null)
             throw new NoSuchElementException("No Visitor found in given TC!");
-        dataBase.getVisitorWithTC(tc).setExitTime(exitTime);
         dataBase.deleteVisitor(new Inmate(dataBase.getVisitorWithTC(tc).inmateNumber) ,dataBase.getVisitorWithTC(tc));
-    }
-
-   
+    }  
 
 }
 
