@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b0dfddbd-c612-4e4d-889e-78e50cbaaefc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/healthAppointments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/healthAppointments.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/Group1/ReadAndWriteFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Group1/ReadAndWriteFile.java" afterDir="false" />
-    </list>
+    <list default="true" id="b0dfddbd-c612-4e4d-889e-78e50cbaaefc" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
