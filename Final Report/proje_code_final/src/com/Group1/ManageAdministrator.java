@@ -50,9 +50,9 @@ public class ManageAdministrator {
 		String name = GetChoiceFromUser.getStringFromUser ("Enter name: ");
 		String surname=GetChoiceFromUser.getStringFromUser ("Enter Surname: ");
 		String password =GetChoiceFromUser.getStringFromUser ("Enter Password: ");
-		HealthStatus healthStatus= getHealthInfo ();
-		PersonnelShift personnelShift= getShiftInfo ();
-		WorkPlace workPlace = place ();
+		HealthStatus healthStatus= GovernorInterfaceInfo.getHealthInfo ();
+		PersonnelShift personnelShift= GovernorInterfaceInfo.getShiftInfo ();
+		WorkPlace workPlace = GovernorInterfaceInfo.place ();
 		Personnel p = new Personnel (id,name,surname,password,JobType.Governor,
 				healthStatus,personnelShift,workPlace);
 		if (db.addPersonnel(p))
@@ -114,31 +114,6 @@ public class ManageAdministrator {
 		System.out.println("[0] Exit.");
 		for ( k = 0; k < 45; k++) System.out.print("-");
 		System.out.print("\n");
-	}
-	private static HealthStatus getHealthInfo(){
-		String bloodGroup = GetChoiceFromUser.getStringFromUser ("Enter blood Group: ");
-		String lastControlResult = GetChoiceFromUser.getStringFromUser ("Enter Last Control Result: ");
-		double height = GetChoiceFromUser.getDouble ("Enter Height: ");
-		double weight = GetChoiceFromUser.getDouble ("Enter weight: ");
-		double pulse = GetChoiceFromUser.getDouble ("Enter pulse: ");
-		return new HealthStatus (bloodGroup,lastControlResult,height,weight,pulse);
-	}
-	private static PersonnelShift getShiftInfo(){
-		String shift = GetChoiceFromUser.getStringFromUser ("Enter Shift Time(daytime,evening,night): ");
-		ArrayList<Days> arrayList = new ArrayList<> ();
-		do {
-			String day =GetChoiceFromUser.getStringFromUser ("Enter day to back exit: ");
-			if (day.equals ("exit"))
-				break;
-			arrayList.add (Days.valueOf (day));
-
-		}while(true);
-		return new PersonnelShift(Shifts.valueOf (shift),arrayList);
-	}
-	private static WorkPlace place(){
-		String blok = GetChoiceFromUser.getStringFromUser ("Enter block(A/B1/B2): ");
-		int floor = GetChoiceFromUser.getSubChoice (1,"Enter Floor(0,1): ");
-		return new WorkPlace (blok,floor);
 	}
 	private void checkMyTodo(Personnel admin){
 		if (db.checkTodo (admin.id)){

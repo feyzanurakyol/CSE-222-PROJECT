@@ -4,3 +4,4 @@
 14100,yasin,kartal,)YC30%P]31Wf&32_?M33rM@78>;(88PK"86C&X83,Doctor,a+,good,1.50,87,0.80,night,Monday,Tuesday,Wednesday,Thursday,Friday
 99999,ali,veli,ou=30WOB31-X/32r>_33>-A78MU'88v{R86Bwt83,Jailer,0,okay,180.0,80.0,90.0,night,Tuesday
 99998,hasan,ahmet,ou=30WOB31-X/32r>_33>-A78MU'88v{R86Bwt83,ChiefJailer,0,good,182.0,80.0,90.0,evening,Monday,Sunday,Saturday
+45689,ads,asd,P#g78R&:78x&w96Rl<81,Governor,asd,sd,8.0,7.0,8.0,daytime,Monday
