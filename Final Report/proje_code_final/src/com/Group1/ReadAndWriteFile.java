@@ -115,11 +115,7 @@ public class ReadAndWriteFile {
         try {
             visitors = new FileWriter (visitorsFile,true);
             visitors.write (visitor.name+","+visitor.surname+","+visitor.tcNumber+","+visitor.inmateNumber
-<<<<<<< HEAD
                     +","+visitor.telephoneNumber+","+visitor.date+","+visitor.entranceTime+visitor.exitTime+","+"\n");
-=======
-                    +","+visitor.telephoneNumber+","+visitor.date+","+visitor.entranceTime+","+visitor.exitTime+"\n");
->>>>>>> ccbfa3ad3359cbb137007540104d925332bc78c4
             visitors.close ();
         }catch (IOException e){
             e.printStackTrace ();
