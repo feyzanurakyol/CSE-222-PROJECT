@@ -453,7 +453,7 @@ public class DataBase {
                 Set<Visitor> visitorSet = iter.next ();
                 int i=0;
                 for (Visitor visitor:visitorSet) {
-                    System.out.printf("\t[%d] %s\n",i+1,visitor.getName ());
+                    System.out.printf("\t[%d] %s\n",i+1,visitor.toString ());
                     i++;
                 }
             }

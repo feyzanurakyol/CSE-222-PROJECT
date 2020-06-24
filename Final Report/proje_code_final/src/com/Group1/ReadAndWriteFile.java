@@ -276,6 +276,7 @@ public class ReadAndWriteFile {
                 String[] information = line.split(",");
                 visitor =new Visitor (information[0],information[1],information[2],Integer.parseInt (information[3]),
                         information[4],information[5], information[6]);
+                visitor.setExitTime (information[7]);
                 Inmate inmate = dataBase.getInmate (Integer.parseInt (information[3]));
                dataBase.addOneVisitor (inmate,visitor);
             }

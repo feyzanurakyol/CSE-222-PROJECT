@@ -53,8 +53,8 @@ public class ManageSystem {
                     System.out.println ("First ToDo Owner: "+
                             p.name+" "+p.surname);
                 }
+                data.printPrison ();
             }
-
 
         }while (choice!=0);
     }
