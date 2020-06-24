@@ -56,6 +56,7 @@ public class ManageChiefJailer extends ManageJailer {
         System.out.print("\n" + "   ");
         System.out.println("[11] Get department");
         for (k = 0; k < 45; k++) System.out.print("-");
+        System.out.print("\n" + "   ");
         System.out.println("[12] Set shift our.");
         for (k = 0; k < 45; k++) System.out.print("-");
         System.out.print("\n" + "   ");
