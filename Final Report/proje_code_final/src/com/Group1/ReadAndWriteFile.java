@@ -73,7 +73,10 @@ public class ReadAndWriteFile {
         try {
             healthAppointments = new FileWriter (healthAppointmentsFile,true);
             healthAppointments.write (healthAppointment.getApID ()+","+healthAppointment.getDate ()+","+
-                    healthAppointment.getOwnerID ()+","+ healthAppointment.getExplanation ()+"\n");
+                    healthAppointment.getOwnerID ()+","+ healthAppointment.getExplanation ()+","
+                    +healthAppointment.getHealthStatus ().getBloodGroup ()+","+healthAppointment.getHealthStatus ().getLastControlResult ()
+                    +","+healthAppointment.getHealthStatus ().getHeight ()+
+                    ","+healthAppointment.getHealthStatus ().getWeight ()+","+healthAppointment.getHealthStatus ().getPulse ()+"\n");
             healthAppointments.close ();
         }catch (IOException e){
             e.printStackTrace ();
