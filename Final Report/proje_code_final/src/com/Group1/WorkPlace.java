@@ -1,5 +1,7 @@
 package com.Group1;
-
+/**
+ * This class holds the personnel work place information
+ */
 public class WorkPlace {
     protected String block;
     protected int floor;

@@ -1,5 +1,7 @@
 package com.Group1;
-
+/**
+ * This class is to make Governor operations in the system.
+ */
 public class ManageGovernor {
     /**
      * This field will be used when we make operations.

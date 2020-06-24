@@ -2,6 +2,9 @@ package com.Group1;
 
 import java.util.Date;
 
+/**
+ * Inmate census info
+ */
 public class DailyInmateCensus {
     private int numberOfInmate;
     private String date;

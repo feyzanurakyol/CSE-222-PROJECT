@@ -3,6 +3,9 @@ package com.Group1;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * Block information in the prison.
+ */
 public class Block {
     protected String blockName;
     protected ArrayList<Integer> wards;//koğuşlar

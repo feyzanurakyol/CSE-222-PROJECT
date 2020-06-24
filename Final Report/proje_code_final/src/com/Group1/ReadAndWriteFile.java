@@ -4,7 +4,8 @@ import java.io.*;
 import java.util.*;
 
 /**
- * Class to fill all data from files.
+ * Class to fill all data from files and manage them .
+ * It is like database.
  */
 public class ReadAndWriteFile {
     private DataBase dataBase;

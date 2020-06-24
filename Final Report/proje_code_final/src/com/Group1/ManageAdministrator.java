@@ -4,6 +4,9 @@ import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * This class is to make Administrator operations in the system.
+ */
 public class ManageAdministrator {
 	/**
 	 * This field will be used when we make operations.

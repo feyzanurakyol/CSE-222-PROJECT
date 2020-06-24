@@ -8,6 +8,10 @@ enum JobType {
     Cook,
     Undefined
 }
+
+/**
+ * This class holds the personnel information
+ */
 public class Personnel implements Comparable<Personnel> {
     protected String name;
     protected String surname;

@@ -17,7 +17,9 @@ enum Shifts {
 	evening, // 16.00 - 00.00
 	night // 00.00 - 08.00
 }
-
+/**
+ * This class holds the personnel Shift information.
+ */
 public class PersonnelShift {
 
 	protected ArrayList<Days> workdays;

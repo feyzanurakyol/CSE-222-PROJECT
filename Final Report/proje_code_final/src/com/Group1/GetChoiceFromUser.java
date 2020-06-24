@@ -2,7 +2,7 @@ package com.Group1;
 
 import java.util.Scanner;
 /**
- * This Class is first to show the menu and then to get choice from user.
+ * This Class is first to show the message and then to get choice from user.
  * It contains only static method to use method with class name.
  * */
 public class GetChoiceFromUser {

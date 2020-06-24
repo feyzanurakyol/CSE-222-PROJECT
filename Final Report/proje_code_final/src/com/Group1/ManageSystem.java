@@ -1,5 +1,7 @@
 package com.Group1;
-
+/**
+ * This class is to manage the system according to user's choice.
+ */
 public class ManageSystem {
     public void startSystem(){
         //create necessary object

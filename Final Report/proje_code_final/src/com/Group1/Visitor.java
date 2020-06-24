@@ -2,7 +2,9 @@ package com.Group1;
 import java.util.*;
 import java.util.Scanner;
 
-
+/**
+ * This class holds the visitor information
+ */
 public class Visitor implements Comparable<Visitor>{
 	/**Data fields*/
 	protected String name;

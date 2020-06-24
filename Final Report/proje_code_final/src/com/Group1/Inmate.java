@@ -5,6 +5,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * This class is to keep inmate info in the system.
+ */
 public class Inmate implements Comparable<Inmate> {
 
     private int id;

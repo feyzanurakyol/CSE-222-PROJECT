@@ -2,6 +2,9 @@ package com.Group1;
 
 import java.util.Random;
 
+/**
+ * This class is to encrypt our passwords
+ */
 public class Encryption {
     public static String encryptPassword(String password){
         Random rnd = new Random ();

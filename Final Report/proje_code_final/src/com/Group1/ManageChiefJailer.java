@@ -3,7 +3,9 @@ import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Queue;
 import java.util.Scanner;
-
+/**
+ * This class is to make Chief Jailer operations in the system.
+ */
 public class ManageChiefJailer extends ManageJailer {
 
     public ManageChiefJailer(DataBase dataBase) {

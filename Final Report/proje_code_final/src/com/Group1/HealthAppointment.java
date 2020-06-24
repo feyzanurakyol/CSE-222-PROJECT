@@ -1,7 +1,8 @@
 package com.Group1;
 
-import java.util.Date;
-
+/**
+ * Health Appointment for inmates.
+ */
 public class HealthAppointment implements Comparable<HealthAppointment> {
     private int apID;
     private String date;

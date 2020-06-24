@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * This class gets information about personnel from the user.
+ */
 public class GovernorInterfaceInfo {
 	public static Personnel addJailerInfo(DataBase dataBase) {
     	int id = GetChoiceFromUser.getIDFromUser (dataBase);

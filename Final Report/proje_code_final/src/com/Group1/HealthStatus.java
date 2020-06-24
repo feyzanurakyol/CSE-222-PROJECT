@@ -2,6 +2,9 @@ package com.Group1;
 
 import java.util.ArrayList;
 
+/**
+ * Health status both inmate and personnel
+ */
 public class HealthStatus {
     private String bloodGroup;
     private String lastControlResult;

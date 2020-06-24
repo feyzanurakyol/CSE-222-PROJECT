@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 /**
- * Jailer Class
+ * This class is to make Jailer operations in the system.
  */
 public class ManageJailer {
 	/**

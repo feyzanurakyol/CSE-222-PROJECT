@@ -2,7 +2,9 @@ package com.Group1;
 
 import java.util.Date;
 
-// Job can be add or remove Inmate, according to the feedback of the governor to the secretary.
+/**
+ * This class keep to information for personnel
+ */
 public class ToDo implements Comparable<ToDo>{
     private String job;
     private int ownerID;

@@ -2,7 +2,9 @@ package com.Group1;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/**
+ * This class is to make Doctor operations in the system.
+ */
 public class ManageDoctor {
     /**
      * This field will be used when we make operations.

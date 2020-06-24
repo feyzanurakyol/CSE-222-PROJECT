@@ -3,6 +3,9 @@ package com.Group1;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
+/**
+ * Food menu in the prison
+ */
 public class DailyFoodMenu {
     //every food in the menu will be added to the list one by one.
     private ArrayList<String> menu;
