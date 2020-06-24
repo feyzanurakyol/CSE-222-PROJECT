@@ -485,11 +485,7 @@ public class DataBase {
     }
     public void printAllPersonnel(){
         System.out.println ("***All Personnel in the system***");
-        for (int k = 0; k < 60; k++) System.out.print("-");
-        System.out.println ();
         System.out.println (allPersonnel);
-        for (int k = 0; k < 60; k++) System.out.print("-");
-        System.out.println ();
     }
     public void printAllPassiveToDo(){
         System.out.println ("***All Passive ToDos in the system***");

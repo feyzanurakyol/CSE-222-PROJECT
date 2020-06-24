@@ -43,4 +43,18 @@ public class PersonnelShift {
 		workdays = new ArrayList<>(days);
 		shift = s;
 	}
+
+	@Override
+	public String toString () {
+		StringBuilder stringBuilder = new StringBuilder ();
+		stringBuilder.append ("Personnel WorkTime is: "+"\n");
+		stringBuilder.append ("\tShift: "+shift.toString ()+"\n");
+		stringBuilder.append ("\tWorkDays: ");
+		for (Days d:workdays) {
+			stringBuilder.append (d.toString ()+",");
+		}
+		stringBuilder.deleteCharAt (stringBuilder.length ()-1);
+		stringBuilder.append ("\n");
+		return stringBuilder.toString ();
+	}
 }

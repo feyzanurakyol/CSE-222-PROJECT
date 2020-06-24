@@ -8,9 +8,9 @@ import java.util.*;
  */
 public class ReadAndWriteFile {
     private DataBase dataBase;
-    private File blocksFile,foodMenuFile,healthAppointmentsFile,inmatesFile,personelFile,todosFile,visitorsFile;
-    private FileWriter blocks,foodMenu,healthAppointments,inmates,personel,todos,visitors;
-    private BufferedReader blocksR,foodMenuR,healthAppointmentsR,inmatesR,personelR,todosR,visitorsR;
+    private File blocksFile,foodMenuFile,healthAppointmentsFile,inmatesFile,personelFile,todosFile,visitorsFile,workplaceFile;
+    private FileWriter blocks,foodMenu,healthAppointments,inmates,personel,todos,visitors,workplace;
+    private BufferedReader blocksR,foodMenuR,healthAppointmentsR,inmatesR,personelR,todosR,visitorsR,workplaceR;
     public ReadAndWriteFile(DataBase dataBase){
         this.dataBase = dataBase;
         createFiles ();
@@ -61,6 +61,9 @@ public class ReadAndWriteFile {
                 else
                     personel.write (days.get (i)+"\n");
             }
+            workplace = new FileWriter (personelFile,true);
+            workplace.write (personnel.getPlace ().block+","+personnel.getPlace ().floor+"\n");
+            workplace.close ();
             personel.close ();
         }catch (IOException e){
             e.printStackTrace ();
@@ -123,6 +126,7 @@ public class ReadAndWriteFile {
         personelFile = new File ("personel.txt");
         todosFile = new File ("todos.txt");
         visitorsFile = new File ("visitors.txt");
+        workplaceFile = new File("workPlace.txt");
     }
     private void openFilesToRead(){
         try {
@@ -133,6 +137,8 @@ public class ReadAndWriteFile {
             personelR = new BufferedReader (new FileReader (personelFile));
             todosR = new BufferedReader (new FileReader (todosFile));
             visitorsR = new BufferedReader (new FileReader (visitorsFile));
+            workplaceR = new BufferedReader (new FileReader (workplaceFile));
+
         }catch (IOException e){
             e.printStackTrace ();
         }
@@ -146,6 +152,7 @@ public class ReadAndWriteFile {
             personelR.close ();
             todosR.close ();
             visitorsR.close ();
+            workplaceR.close ();
 
         }catch (IOException e){
             e.printStackTrace ();
@@ -154,8 +161,8 @@ public class ReadAndWriteFile {
     private void fillPersonnel(){
         try {
             Personnel personnel;
-            String line;
-            while ((line = personelR.readLine()) != null) {
+            String line,line2;
+            while ((line = personelR.readLine()) != null && (line2 = workplaceR.readLine ())!=null) {
                 String[] information = line.split (",");
                 ArrayList<Days> days =new ArrayList<> ();
                 for (int i = 11; i < information.length; i++) {
@@ -166,8 +173,9 @@ public class ReadAndWriteFile {
                         new HealthStatus (information[5],information[6], Double.parseDouble (information[7]),
                                 Double.parseDouble (information[8]), Double.parseDouble (information[9])),
                         new PersonnelShift (Shifts.valueOf (information[10]),days));
+                String[] in =line2.split (",");
+                personnel.setPlace (new WorkPlace (in[0],Integer.parseInt (in[1])));
                 dataBase.addPersonnel (personnel);
-                dataBase.addID (personnel.id);
             }
         }catch (IOException e){
             e.printStackTrace ();
@@ -221,7 +229,6 @@ public class ReadAndWriteFile {
                         new HealthStatus (information[5],information[6], Double.parseDouble (information[7]),
                                 Double.parseDouble (information[8]), Double.parseDouble (information[9])));
                 dataBase.addInmate (inmate);
-                dataBase.addID (inmate.getId ());
             }
         }catch (IOException e){
             e.printStackTrace ();
@@ -289,9 +296,11 @@ public class ReadAndWriteFile {
     public void updatePersonnel(Personnel old,Personnel newP){
         try {
             personelR = new BufferedReader (new FileReader (personelFile));
+            workplaceR = new BufferedReader (new FileReader (workplaceFile));
             StringBuilder writer = new StringBuilder();
-            String line;
-            while ((line = personelR.readLine()) != null) {
+            StringBuilder writer2 = new StringBuilder();
+            String line,line2;
+            while ((line = personelR.readLine()) != null && (line2 = workplaceR.readLine ())!=null) {
                 String[] information = line.split(",");
                 if (Integer.parseInt (information[0]) == old.id){
                     writer.append (newP.id+","+newP.name+","+newP.surname+","+Encryption.encryptPassword (newP.password)+","+newP.job+
@@ -302,15 +311,21 @@ public class ReadAndWriteFile {
                         writer.append (day+",");
                     }
                     writer.append ("\n");
+                    writer2.append (newP.getPlace ().block+","+newP.getPlace ().floor);
                 }
                 else {
                     writer.append (line+"\n");
+                    writer2.append (line2+"\n");
                 }
             }
             FileWriter  fileWriter = new FileWriter (personelFile);
             fileWriter.write (writer.toString ());
+            FileWriter  fileWriter2 = new FileWriter (workplaceFile);
+            fileWriter2.write (writer2.toString ());
+            workplaceR.close ();
             personelR.close ();
             fileWriter.close ();
+            fileWriter2.close ();
         }catch (IOException e){
             e.printStackTrace ();
         }
@@ -446,19 +461,26 @@ public class ReadAndWriteFile {
     }
     public void deletePersonnel(Personnel old){
         try {
+            workplaceR = new BufferedReader (new FileReader (workplaceFile));
+            StringBuilder writer2 = new StringBuilder();
             personelR = new BufferedReader (new FileReader (personelFile));
             StringBuilder writer = new StringBuilder();
-            String line;
-            while ((line = personelR.readLine()) != null) {
+            String line,line2;
+            while ((line = personelR.readLine()) != null && (line2 = workplaceR.readLine ())!=null) {
                 String[] information = line.split(",");
                 if (Integer.parseInt (information[0]) != old.id){
                     writer.append (line+"\n");
+                    writer2.append (line2+"\n");
                 }
             }
             FileWriter  fileWriter = new FileWriter (personelFile);
             fileWriter.write (writer.toString ());
+            FileWriter  fileWriter2 = new FileWriter (workplaceFile);
+            fileWriter2.write (writer2.toString ());
             personelR.close ();
+            workplaceR.close ();
             fileWriter.close ();
+            fileWriter2.close ();
         }catch (IOException e){
             e.printStackTrace ();
         }

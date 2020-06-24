@@ -61,12 +61,12 @@ public class HealthStatus {
     
     @Override
     public String toString() {
-        return "Health Information\n" +
-                "\nLength = " + height + '\'' +
-                "\nWeight = " + weight + '\'' +
-                "\nBlood Group = " + bloodGroup +
-                "\nPulse = " + pulse +
-                "\nLast Report : " + lastControlResult;
+        return "Health Information" +
+                "\n\tLength = " + height + '\'' +
+                "\n\tWeight = " + weight + '\'' +
+                "\n\tBlood Group = " + bloodGroup +
+                "\n\tPulse = " + pulse +
+                "\n\tLast Report : " + lastControlResult;
     }
 
 }

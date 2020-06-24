@@ -30,9 +30,9 @@ public class WorkPlace {
 
     @Override
     public String toString () {
-        return "WorkPlace{" +
-                "block=" + block +
-                ", floor=" + floor +
-                '}';
+        return "Work Place information:" +
+                "\n\tBlock= " + block +
+                "\n\tFloor=" + floor +
+                '\n';
     }
 }

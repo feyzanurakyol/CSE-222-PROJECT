@@ -131,15 +131,31 @@ public class Personnel implements Comparable<Personnel> {
 
     @Override
     public String toString () {
-        return "Personnel{" +
+         int k;
+        StringBuilder stringBuilder = new StringBuilder ();
+        for ( k = 0; k < 45; k++) stringBuilder.append ("-");
+        stringBuilder.append ("\n");
+        stringBuilder.append ("Personnel{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", id=" + id +
                 ", job=" + job +
-                ", healthStatus=" + healthStatus +
-                ", password='" + password + '\'' +
-                ", shift=" + shift +
-                ", place=" + place +
-                '}';
+                '}');
+        stringBuilder.append ("\n");
+        stringBuilder.append ("\nHealth Information" +
+                "\nLength = " + healthStatus.getHeight () + '\'' +
+                "\nWeight = " + healthStatus.getWeight () + '\'' +
+                "\nBlood Group = " + healthStatus.getBloodGroup () +
+                "\nPulse = " + healthStatus.getPulse () +
+                "\nLast Report : " + healthStatus.getLastControlResult ());
+
+        stringBuilder.append ("\n\n");
+        stringBuilder.append (shift.toString ());
+        stringBuilder.append ("\n");
+        stringBuilder.append (place.toString ());
+        for ( k = 0; k < 45; k++) stringBuilder.append ("-");
+        stringBuilder.append ("\n");
+        return stringBuilder.toString ();
+
     }
 }
