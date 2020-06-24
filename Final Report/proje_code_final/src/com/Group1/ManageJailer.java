@@ -30,6 +30,8 @@ public class ManageJailer {
 	}
 	public void addCensus(){
 		int number = GetChoiceFromUser.getNumber ("Enter number of Inmate: ");
+		if(number != dataBase.getInmateSize())
+			dataBase.setAlert();
 		dataBase.addInmateCensus (number, DateFormat.getInstance().format(new Date()));
 		System.out.println ("Census info was Added with today's date.");
 	}
