@@ -17,7 +17,7 @@ public class ManageSystem {
         int choice,id;
         do{
             mainMenu ();
-            choice = GetChoiceFromUser.getSubChoice(3,"Answer: ");
+            choice = GetChoiceFromUser.getSubChoice(2,"Answer: ");
             if (choice==1){
                 Personnel personnel = validator.validatePersonnel ();
                 if (personnel!=null){
@@ -54,8 +54,7 @@ public class ManageSystem {
                             p.name+" "+p.surname);
                 }
             }
-            else
-                data.printAllPersonnel ();
+
 
         }while (choice!=0);
     }

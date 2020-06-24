@@ -277,16 +277,7 @@ public class ReadAndWriteFile {
                 visitor =new Visitor (information[0],information[1],information[2],Integer.parseInt (information[3]),
                         information[4],information[5], information[6]);
                 Inmate inmate = dataBase.getInmate (Integer.parseInt (information[3]));
-                NavigableSet<Visitor> visitorSet = dataBase.getVisitorSet (inmate);
-                if (visitorSet == null){
-                    NavigableSet<Visitor> set = new TreeSet<> ();
-                    set.add (visitor);
-                    dataBase.addVisitor (inmate,set);
-                }
-                else {
-                    visitorSet.add (visitor);
-                    dataBase.setVisitorSet (inmate,visitorSet,visitor);
-                }
+               dataBase.addOneVisitor (inmate,visitor);
             }
 
         }catch (IOException e){

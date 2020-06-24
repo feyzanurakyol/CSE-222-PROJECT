@@ -199,8 +199,18 @@ public class DataBase {
     }
     public void addOneVisitor(Inmate inmate, Visitor visitor){
         NavigableSet<Visitor> visitors = visitorsMap.get (inmate);
-        visitors.add (visitor);
-        visitorsMap.put (inmate,visitors);
+        if (visitors==null){
+            NavigableSet<Visitor> v = new TreeSet<> ();
+            v.add (visitor);
+            addVisitor (inmate,v);
+        }
+        else{
+            visitors.add (visitor);
+            visitorsMap.replace (inmate,visitors);
+        }
+        if (fileFlag)
+            readAndWriteFile.writeVisitor (visitor);
+
     }
     public boolean deleteVisitor(Inmate prisoner,Visitor visitor){
         boolean removed = false;
