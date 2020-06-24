@@ -26,7 +26,7 @@ public class ManageCook {
         int choose;
         do {
             showMenu (cook);
-            choose = GetChoiceFromUser.getSubChoice (6,"Answer: ");
+            choose = GetChoiceFromUser.getSubChoice (7,"Answer: ");
             switch(choose) {
                 case 1:
                     addMenu();
