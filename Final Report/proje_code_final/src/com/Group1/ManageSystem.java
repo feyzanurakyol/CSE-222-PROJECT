@@ -41,7 +41,7 @@ public class ManageSystem {
                 int k;
                 for ( k = 0; k < 45; k++) System.out.print("-");
                 System.out.print("\n");
-                System.out.println ("***Prison Current Status***");
+                System.out.println ("\t***Prison Current Status***");
                 if (data.getAlert ())
                     System.out.println ("Alert of State: Yes ");
                 else
@@ -53,6 +53,9 @@ public class ManageSystem {
                     System.out.println ("First ToDo Owner: "+
                             p.name+" "+p.surname);
                 }
+                for ( k = 0; k < 45; k++) System.out.print("-");
+                System.out.print("\n");
+                System.out.println ("\t***Prison Structure***");
                 data.printPrison ();
             }
 
