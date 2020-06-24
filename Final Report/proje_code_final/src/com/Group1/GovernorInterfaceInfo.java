@@ -11,7 +11,7 @@ public class GovernorInterfaceInfo {
         HealthStatus healthStatus= getHealthInfo ();
         PersonnelShift personnelShift= getShiftInfo ();
         WorkPlace workPlace = place ();
-        return new Personnel (id,name,surname,Encryption.encryptPassword (password),JobType.Jailer,healthStatus,personnelShift,workPlace);
+        return new Personnel (id,name,surname,password,JobType.Jailer,healthStatus,personnelShift,workPlace);
     }
     public static HealthStatus getHealthInfo(){
         String bloodGroup = GetChoiceFromUser.getStringFromUser ("Enter blood Group: ");
@@ -47,7 +47,7 @@ public class GovernorInterfaceInfo {
         HealthStatus healthStatus= getHealthInfo ();
         PersonnelShift personnelShift= getShiftInfo ();
         WorkPlace workPlace = place ();
-        return new Personnel (id,name,surname,Encryption.encryptPassword (password),JobType.ChiefJailer,healthStatus,personnelShift,workPlace);
+        return new Personnel (id,name,surname,password,JobType.ChiefJailer,healthStatus,personnelShift,workPlace);
     }
     
     public static Personnel addCookInfo(DataBase dataBase) {
@@ -58,7 +58,7 @@ public class GovernorInterfaceInfo {
         HealthStatus healthStatus= getHealthInfo ();
         PersonnelShift personnelShift= getShiftInfo ();
         WorkPlace workPlace = place ();
-        return new Personnel (id,name,surname,Encryption.encryptPassword (password),JobType.Cook,healthStatus,personnelShift,workPlace);
+        return new Personnel (id,name,surname,password,JobType.Cook,healthStatus,personnelShift,workPlace);
     }
     
     public static Personnel addDoctorInfo(DataBase dataBase) {
@@ -69,7 +69,7 @@ public class GovernorInterfaceInfo {
         HealthStatus healthStatus= getHealthInfo ();
         PersonnelShift personnelShift= getShiftInfo ();
         WorkPlace workPlace = place ();
-        return new Personnel (id,name,surname,Encryption.encryptPassword (password),JobType.Doctor,healthStatus,personnelShift,workPlace);
+        return new Personnel (id,name,surname,password,JobType.Doctor,healthStatus,personnelShift,workPlace);
     }
     
     public static Inmate addInmateInfo(DataBase dataBase) {

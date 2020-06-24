@@ -58,7 +58,6 @@ public class ManageSystem {
                 System.out.println ("\t***Prison Structure***");
                 data.printPrison ();
             }
-         
 
         }while (choice!=0);
     }
