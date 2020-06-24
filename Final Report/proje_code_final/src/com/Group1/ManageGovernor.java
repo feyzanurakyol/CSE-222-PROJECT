@@ -148,6 +148,7 @@ public class ManageGovernor {
             System.out.println("Personnel was removed!");
     }
     private void updatePersonnel(){
+        int k;
         Personnel temp=null;
         int id;
         do {
