@@ -280,6 +280,7 @@ public class ManageChiefJailer extends ManageJailer {
         String exitTime = scan.nextLine();
 
         removeVisitor(tc,exitTime,dataBase);
+        dataBase.printAllVisitor();
     }
     
     protected void removeVisitor(String tc,String exitTime,DataBase dataBase)
