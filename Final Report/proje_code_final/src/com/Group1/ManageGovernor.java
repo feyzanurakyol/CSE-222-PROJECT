@@ -23,7 +23,7 @@ public class ManageGovernor {
         int choose;
         do {
             showMenu (governor);
-            choose = GetChoiceFromUser.getSubChoice (10,"Answer: ");
+            choose = GetChoiceFromUser.getSubChoice (13,"Answer: ");
             switch(choose) {
                 case 1:
                     addPersonnel ();
