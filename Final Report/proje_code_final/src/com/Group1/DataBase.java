@@ -66,7 +66,10 @@ public class DataBase {
     public boolean deleteMenu(String day){
         int index =findMenu (day);
         if (index!=-1){
-            readAndWriteFile.deleteFoodMenu (menuList.remove (index));
+            while (index != -1){
+                readAndWriteFile.deleteFoodMenu (menuList.remove (index));
+                index = findMenu(day);
+            }
             return true;
         }
         else {

@@ -1,4 +1,3 @@
-Monday,breakfast,zeytin,peynir,recel
 Tuesday,breakfast,zeytin,peynir,recel
-Sunday,breakfast,zeytin,peynir,recel
 Wednesday,breakfast,zeytin,peynir,recel
+Tuesday,lunch,yayla corbasi,bulgur,tavuk sote,
