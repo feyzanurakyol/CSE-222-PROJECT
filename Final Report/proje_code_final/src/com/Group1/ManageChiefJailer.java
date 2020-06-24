@@ -222,6 +222,7 @@ public class ManageChiefJailer extends ManageJailer {
 
         System.out.println("Enter new workplace's block(A/B1/B2): ");
         String blockName = scan.nextLine();
+        blockName = scan.nextLine();
 
         System.out.println("Enter new workplace's floor(0/1): ");
         int floor = scan.nextInt();
